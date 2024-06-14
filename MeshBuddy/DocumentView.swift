@@ -8,15 +8,23 @@ struct DocumentView: View {
 
     @State private var showingConfigurationSheet = false
 
+    @Environment(\.dismiss)
+    private var dismiss
+
     var body: some View {
         MeshGradientEditor(gradient: undoBinding)
             .task {
                 showingConfigurationSheet = document.needsSetup
             }
             .sheet(isPresented: $showingConfigurationSheet) {
-                document.needsSetup = false
+                /// Close document if configuration sheet is closed without clicking the Done button.
+                if document.needsSetup {
+                    DispatchQueue.main.async {
+                        dismiss()
+                    }
+                }
             } content: {
-                DocumentConfigurationSheet(definition: $document.definition)
+                DocumentSetupSheet(document: $document)
             }
     }
 

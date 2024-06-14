@@ -10,7 +10,7 @@
 		F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */; };
 		F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
 		F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
-		F47F1E262C1B716500050947 /* DocumentConfigurationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */; };
+		F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */; };
 		F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */; };
 		F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
 		F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */; };
@@ -24,7 +24,7 @@
 		F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinition.swift; sourceTree = "<group>"; };
 		F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinitionDocument.swift; sourceTree = "<group>"; };
 		F47F1E242C1B6E0400050947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentConfigurationSheet.swift; sourceTree = "<group>"; };
+		F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSetupSheet.swift; sourceTree = "<group>"; };
 		F47F1E272C1B785800050947 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDefault.swift; sourceTree = "<group>"; };
 		F47F1E312C1C820500050947 /* DocumentFileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileContainer.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				F47F1E212C1B6D8500050947 /* Model */,
 				F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */,
 				F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */,
-				F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */,
+				F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */,
 				F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */,
 				F47F1E242C1B6E0400050947 /* Info.plist */,
 				F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */,
@@ -183,7 +183,7 @@
 				F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */,
 				F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */,
 				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
-				F47F1E262C1B716500050947 /* DocumentConfigurationSheet.swift in Sources */,
+				F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */,
 				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

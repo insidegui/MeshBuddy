@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct DocumentConfigurationSheet: View {
-    @Binding var definition: MeshGradientDefinition
+struct DocumentSetupSheet: View {
+    @Binding var document: MeshGradientDefinitionDocument
 
     @State private var template = MeshGradientDefinition.default
 
@@ -17,15 +17,22 @@ struct DocumentConfigurationSheet: View {
         .frame(minWidth: 320, maxWidth: .infinity, minHeight: 340, maxHeight: .infinity)
         .safeAreaInset(edge: .bottom) {
             HStack {
+                Button("Cancel") {
+                    dismiss()
+                }
+                .keyboardShortcut(.cancelAction)
+
                 Spacer()
 
                 Button("Create") {
-                    definition = MeshGradientDefinition(from: template)
+                    document.needsSetup = false
+                    document.definition = MeshGradientDefinition(from: template)
+                    
                     dismiss()
                 }
-                .controlSize(.large)
                 .keyboardShortcut(.defaultAction)
             }
+            .controlSize(.large)
             .padding()
         }
     }
@@ -33,8 +40,8 @@ struct DocumentConfigurationSheet: View {
 
 #if DEBUG
 #Preview {
-    @Previewable @State var definition = MeshGradientDefinition.default
+    @Previewable @State var document = MeshGradientDefinitionDocument(definition: .default)
 
-    DocumentConfigurationSheet(definition: $definition)
+    DocumentSetupSheet(document: $document)
 }
 #endif
