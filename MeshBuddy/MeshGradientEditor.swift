@@ -14,11 +14,13 @@ struct MeshGradientEditor: View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
+                    let visibilityHelp: LocalizedStringKey = controlsVisible ? "Hide Controls" : "Show Controls"
                     Toggle(
-                        controlsVisible ? "Hide Controls" : "Show Controls",
+                        visibilityHelp,
                         systemImage: "square.on.square.squareshape.controlhandles",
                         isOn: $controlsVisible
                     )
+                    .help(visibilityHelp)
 
                     Button {
                         withAnimation(.smooth) {
@@ -27,6 +29,16 @@ struct MeshGradientEditor: View {
                     } label: {
                         Image(systemName: "wand.and.sparkles.inverse")
                     }
+                    .help("Apply perlin noise")
+
+                    Button {
+                        withAnimation(.smooth) {
+                            gradient.randomize()
+                        }
+                    } label: {
+                        Image(systemName: "dice")
+                    }
+                    .help("Randomize points")
                 }
             }
     }
@@ -197,7 +209,7 @@ struct MeshGradientCanvas: View {
 }
 
 struct MeshGradientPointHandle: View {
-    static var size: CGFloat { 12 }
+    nonisolated static var size: CGFloat { 12 }
 
     var point: MeshGradientPoint
     var viewPort: CGRect

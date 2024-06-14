@@ -1,7 +1,7 @@
 import SwiftUI
 import GameKit
 
-struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codable {
+struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codable, Sendable {
     var id: UUID = UUID()
     var simd: SIMD2<Float>
     var color: Color
@@ -37,7 +37,7 @@ struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codab
     }
 }
 
-struct MeshGradientDefinition: Codable {
+struct MeshGradientDefinition: Codable, Sendable {
     var id: UUID = UUID()
     var width: Int
     var height: Int
@@ -164,6 +164,8 @@ extension MeshGradientDefinition {
 }
 
 extension MeshGradientDefinition {
+    func indexForPoint(atRow row: Int, column: Int) -> Int { row * width + column }
+
     /// Frequency range: 0.5...5.0
     /// Amplitude range: 0.05...0.01
     mutating func distortPoints(frequency: Double = 1.0, amplitude: Double = 0.07) {
@@ -171,13 +173,42 @@ extension MeshGradientDefinition {
         let noise = GKNoise(noiseSource)
         let noiseMap = GKNoiseMap(noise)
 
-        for i in 0..<height {
-            for j in 0..<width {
-                let index = i * width + j
-                let noiseValueX = noiseMap.value(at: vector_int2(Int32(j), Int32(i)))
-                let noiseValueY = noiseMap.value(at: vector_int2(Int32(i), Int32(j)))
-                points[index].x += noiseValueX * Float(amplitude)
-                points[index].y += noiseValueY * Float(amplitude)
+        mutatePoints { point, index, row, column, _, _ in
+            let noiseValueX = noiseMap.value(at: vector_int2(Int32(column), Int32(row)))
+            let noiseValueY = noiseMap.value(at: vector_int2(Int32(row), Int32(column)))
+            point.x += noiseValueX * Float(amplitude)
+            point.y += noiseValueY * Float(amplitude)
+        }
+    }
+
+    mutating func mutatePoints(using closure: (_ point: inout MeshGradientPoint) -> Void) {
+        mutatePoints { point, _, _, _, _, _ in
+            closure(&point)
+        }
+    }
+
+    mutating func mutatePoints(using closure: (_ point: inout MeshGradientPoint, _ index: Int, _ row: Int, _ column: Int, _ width: Int, _ height: Int) -> Void) {
+        var snapshot = points
+
+        for row in 0..<height {
+            for column in 0..<width {
+                let index = indexForPoint(atRow: row, column: column)
+                var mutablePoint = snapshot[index]
+                closure(&mutablePoint, index, row, column, width, height)
+                snapshot[index] = mutablePoint
+            }
+        }
+
+        self.points = snapshot
+    }
+
+    mutating func randomize() {
+        mutatePoints { point in
+            if point.x > 0 && point.x < 1 {
+                point.x = Float.random(in: 0...1)
+            }
+            if point.y > 0 && point.y < 1 {
+                point.y = Float.random(in: 0...1)
             }
         }
     }
