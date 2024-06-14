@@ -100,15 +100,17 @@ struct MeshGradientCanvas: View {
             GeometryReader { proxy in
                 let viewPort = proxy.frame(in: .local)
                 ZStack {
-                    MeshGradient(
-                        width: gradient.width,
-                        height: gradient.height,
-                        points: gradient.simdPoints,
-                        colors: gradient.colors,
-                        background: gradient.backgroundColor,
-                        smoothsColors: gradient.smoothsColors,
-                        colorSpace: gradient.colorSpace
-                    )
+                    if gradient.width > 0 && gradient.height > 0 {
+                        MeshGradient(
+                            width: gradient.width,
+                            height: gradient.height,
+                            points: gradient.simdPoints,
+                            colors: gradient.colors,
+                            background: gradient.backgroundColor,
+                            smoothsColors: gradient.smoothsColors,
+                            colorSpace: gradient.colorSpace
+                        )
+                    }
 
                     ForEach(gradient.points) { point in
                         MeshGradientPointHandle(

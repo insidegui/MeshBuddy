@@ -3,14 +3,14 @@ import SwiftUI
 struct DocumentConfigurationSheet: View {
     @Binding var definition: MeshGradientDefinition
 
-    @State private var editingDefinition = MeshGradientDefinition(width: 5, height: 5, backgroundColor: .indigo)
+    @State private var template = MeshGradientDefinition(width: 5, height: 5, backgroundColor: .indigo)
 
     @Environment(\.dismiss)
     private var dismiss
 
     var body: some View {
         MeshGradientInspector(
-            gradient: $editingDefinition,
+            gradient: $template,
             selectedPoints: .constant([]),
             documentConfiguration: true
         )
@@ -20,7 +20,7 @@ struct DocumentConfigurationSheet: View {
                 Spacer()
 
                 Button("Create") {
-                    definition = editingDefinition
+                    definition = MeshGradientDefinition(from: template)
                     dismiss()
                 }
                 .controlSize(.large)
@@ -28,6 +28,18 @@ struct DocumentConfigurationSheet: View {
             }
             .padding()
         }
+    }
+}
+
+extension MeshGradientDefinition {
+    init(from template: Self) {
+        self.init(
+            width: template.width,
+            height: template.height,
+            smoothsColors: template.smoothsColors,
+            backgroundColor: template.backgroundColor,
+            colorSpace: template.colorSpace
+        )
     }
 }
 
