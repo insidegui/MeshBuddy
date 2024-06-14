@@ -40,12 +40,12 @@ struct MeshGradientEditor: View {
 
         Button {
             withAnimation(.smooth) {
-                gradient.randomize()
+                gradient.randomizeMesh()
             }
         } label: {
             Image(systemName: "dice")
         }
-        .help("Randomize points")
+        .help("Randomize mesh")
 
         Button {
             withAnimation(.smooth) {
@@ -220,8 +220,8 @@ struct MeshGradientPointHandle: View {
         viewPortHeight: 512,
         width: 5,
         height: 5,
-        colorPalette: nil,
-        colorDistribution: .random,
+        colorPalette: [.orange, .red, .purple, .pink],
+        colorDistribution: .uniform,
         smoothsColors: true,
         backgroundColor: .randomSystemColor(),
         colorSpace: .device

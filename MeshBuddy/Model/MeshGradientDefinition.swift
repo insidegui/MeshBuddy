@@ -179,21 +179,33 @@ extension MeshGradientDefinition {
 
 // MARK: - Editing Utilities
 
+extension MeshGradientPoint {
+    /// `true` if point is flush against the edge of the gradient in the x axis.
+    var isHorizontalEdge: Bool { x >= 1 || x == 0 }
+    /// `true` if point is flush against the edge of the gradient in the y axis.
+    var isVerticalEdge: Bool { y >= 1 || y == 0 }
+}
+
 extension MeshGradientDefinition {
     func indexForPoint(atRow row: Int, column: Int) -> Int { row * width + column }
 
     /// Frequency range: 0.5...5.0
     /// Amplitude range: 0.05...0.01
     mutating func distortPoints(frequency: Double = 1.0, amplitude: Double = 0.07) {
-        let noiseSource = GKPerlinNoiseSource(frequency: frequency, octaveCount: 6, persistence: 0.5, lacunarity: 2.0, seed: Int32.random(in: 0...Int32.max))
-        let noise = GKNoise(noiseSource)
-        let noiseMap = GKNoiseMap(noise)
 
         mutatePoints { point, index, row, column, _, _ in
+            let noiseSource = GKPerlinNoiseSource(frequency: frequency, octaveCount: 6, persistence: 0.5, lacunarity: 2.0, seed: Int32.random(in: 0...Int32.max))
+            let noise = GKNoise(noiseSource)
+            let noiseMap = GKNoiseMap(noise)
+
             let noiseValueX = noiseMap.value(at: vector_int2(Int32(column), Int32(row)))
             let noiseValueY = noiseMap.value(at: vector_int2(Int32(row), Int32(column)))
-            point.x += noiseValueX * Float(amplitude)
-            point.y += noiseValueY * Float(amplitude)
+            if !point.isHorizontalEdge {
+                point.x += noiseValueX * Float(amplitude)
+            }
+            if !point.isVerticalEdge {
+                point.y += noiseValueY * Float(amplitude)
+            }
         }
     }
 
@@ -218,13 +230,19 @@ extension MeshGradientDefinition {
         self.points = snapshot
     }
 
-    mutating func randomize() {
+    mutating func randomizeMesh(magnitude: Float = 0.2) {
+        resetPointPositions()
+
+        var seed = SystemRandomNumberGenerator()
+
         mutatePoints { point in
             if point.x > 0 && point.x < 1 {
-                point.x = Float.random(in: 0...1)
+                let rangeX: ClosedRange<Float> = (point.x - magnitude)...(point.x + magnitude)
+                point.x = max(0, min(1, Float.random(in: rangeX, using: &seed)))
             }
             if point.y > 0 && point.y < 1 {
-                point.y = Float.random(in: 0...1)
+                let rangeY: ClosedRange<Float> = (point.y - magnitude)...(point.y + magnitude)
+                point.y = max(0, min(1, Float.random(in: rangeY, using: &seed)))
             }
         }
     }
