@@ -112,6 +112,12 @@ extension Binding where Value == MeshGradientDefinition {
 
 // MARK: - Canvas
 
+extension MeshGradientDefinition {
+    var bounds: CGRect {
+        CGRect(x: 0, y: 0, width: viewPortWidth, height: viewPortHeight)
+    }
+}
+
 struct MeshGradientCanvas: View {
 
     @Binding var gradient: MeshGradientDefinition
@@ -144,34 +150,31 @@ struct MeshGradientCanvas: View {
     @ViewBuilder
     private var content: some View {
         ZStack {
-            GeometryReader { proxy in
-                let viewPort = proxy.frame(in: .local)
-                ZStack {
-                    if gradient.width > 0 && gradient.height > 0 {
-                        MeshGradient(
-                            width: gradient.width,
-                            height: gradient.height,
-                            points: gradient.simdPoints,
-                            colors: gradient.colors,
-                            background: gradient.backgroundColor,
-                            smoothsColors: gradient.smoothsColors,
-                            colorSpace: gradient.colorSpace
-                        )
-                    }
-
-                    ForEach(gradient.points) { point in
-                        MeshGradientPointHandle(
-                            point: point,
-                            viewPort: viewPort,
-                            gradient: gradient,
-                            isSelected: selectedPoints.contains(point.id),
-                            isVisible: controlsVisible
-                        )
-                    }
+            ZStack {
+                if gradient.width > 0 && gradient.height > 0 {
+                    MeshGradient(
+                        width: gradient.width,
+                        height: gradient.height,
+                        points: gradient.simdPoints,
+                        colors: gradient.colors,
+                        background: gradient.backgroundColor,
+                        smoothsColors: gradient.smoothsColors,
+                        colorSpace: gradient.colorSpace
+                    )
                 }
-                .contentShape(Rectangle())
-                .gesture(dragGesture(with: viewPort))
+
+                ForEach(gradient.points) { point in
+                    MeshGradientPointHandle(
+                        point: point,
+                        viewPort: gradient.bounds,
+                        gradient: gradient,
+                        isSelected: selectedPoints.contains(point.id),
+                        isVisible: controlsVisible
+                    )
+                }
             }
+            .contentShape(Rectangle())
+            .gesture(dragGesture(with: gradient.bounds))
             .animation(.snappy, value: controlsVisible)
         }
         .frame(width: CGFloat(gradient.viewPortWidth), height: CGFloat(gradient.viewPortHeight))
@@ -265,8 +268,8 @@ struct MeshGradientPointHandle: View {
 #if DEBUG
 #Preview {
     @Previewable @State var definition = MeshGradientDefinition.init(
-        viewPortWidth: 300,
-        viewPortHeight: 300,
+        viewPortWidth: 512,
+        viewPortHeight: 512,
         width: 5,
         height: 5,
         colorPalette: nil,
