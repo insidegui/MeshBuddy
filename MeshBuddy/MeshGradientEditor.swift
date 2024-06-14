@@ -58,58 +58,6 @@ struct MeshGradientEditor: View {
     }
 }
 
-// MARK: - Inspector
-
-struct MeshGradientInspector: View {
-    @Binding var gradient: MeshGradientDefinition
-    @Binding var selectedPoints: Set<MeshGradientPoint.ID>
-    var documentConfiguration = false
-
-    var body: some View {
-        Form {
-            Section {
-                TextField("Rows", value: $gradient.height, format: .number)
-                    .disabled(!documentConfiguration)
-
-                TextField("Columns", value: $gradient.width, format: .number)
-                    .disabled(!documentConfiguration)
-
-                if !documentConfiguration {
-                    Toggle("Smooth Colors", isOn: $gradient.smoothsColors)
-                }
-
-                ColorPicker("Background", selection: $gradient.backgroundColor)
-            } header: {
-                Text("Gradient")
-            }
-
-            if !documentConfiguration {
-                Section {
-                    ColorPicker("Color", selection: $gradient.colorBinding(for: selectedPoints))
-                        .disabled(selectedPoints.isEmpty)
-                } header: {
-                    Text("Selection")
-                }
-            }
-        }
-        .formStyle(.grouped)
-    }
-}
-
-extension Binding where Value == MeshGradientDefinition {
-    func colorBinding(for selection: Set<MeshGradientPoint.ID>) -> Binding<Color> {
-        .init {
-            guard let id = selection.first else { return .clear }
-            return wrappedValue[id].color
-        } set: { newValue in
-            for id in selection {
-                wrappedValue[id].color = newValue
-            }
-        }
-
-    }
-}
-
 // MARK: - Canvas
 
 extension MeshGradientDefinition {
