@@ -121,7 +121,28 @@ struct MeshGradientCanvas: View {
     @Environment(\.colorScheme)
     private var colorScheme
 
+    private func scale(in proxy: GeometryProxy) -> CGFloat {
+        let w = proxy.size.width / CGFloat(gradient.viewPortWidth)
+        let h = proxy.size.height / CGFloat(gradient.viewPortHeight)
+        return min(w, h)
+    }
+
     var body: some View {
+        GeometryReader { proxy in
+            let scale = scale(in: proxy)
+            let x = proxy.size.width * 0.5
+            let y = proxy.size.height * 0.5
+            content
+                .position(x: x, y: y)
+                .scaleEffect(scale)
+        }
+            .padding(32)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(colorScheme == .dark ? Color.black : Color.white)
+    }
+
+    @ViewBuilder
+    private var content: some View {
         ZStack {
             GeometryReader { proxy in
                 let viewPort = proxy.frame(in: .local)
@@ -153,11 +174,7 @@ struct MeshGradientCanvas: View {
             }
             .animation(.snappy, value: controlsVisible)
         }
-        .aspectRatio(1, contentMode: .fit)
-        .frame(minWidth: 400)
-        .padding(32)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(colorScheme == .dark ? Color.black : Color.white)
+        .frame(width: CGFloat(gradient.viewPortWidth), height: CGFloat(gradient.viewPortHeight))
     }
 
     @State private var dragReferenceTranslation = CGSize.zero
@@ -247,7 +264,18 @@ struct MeshGradientPointHandle: View {
 
 #if DEBUG
 #Preview {
-    @Previewable @State var definition = MeshGradientDefinition.default
+    @Previewable @State var definition = MeshGradientDefinition.init(
+        viewPortWidth: 300,
+        viewPortHeight: 300,
+        width: 5,
+        height: 5,
+        colorPalette: nil,
+        colorDistribution: .random,
+        smoothsColors: true,
+        backgroundColor: .randomSystemColor(),
+        colorSpace: .device
+    )
+
     MeshGradientEditor(gradient: $definition)
         .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
 }
