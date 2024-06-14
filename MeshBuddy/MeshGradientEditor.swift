@@ -249,5 +249,6 @@ struct MeshGradientPointHandle: View {
 #Preview {
     @Previewable @State var definition = MeshGradientDefinition(width: 12, height: 12, backgroundColor: .indigo)
     MeshGradientEditor(gradient: $definition)
+        .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
 }
 #endif

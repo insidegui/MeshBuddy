@@ -11,6 +11,8 @@
 		F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
 		F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
 		F47F1E262C1B716500050947 /* DocumentConfigurationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */; };
+		F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */; };
+		F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
 		F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */; };
 		F4E8C7F82C1B4B5900BEF570 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F72C1B4B5900BEF570 /* ContentView.swift */; };
 		F4E8C7FA2C1B4B5A00BEF570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		F47F1E242C1B6E0400050947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentConfigurationSheet.swift; sourceTree = "<group>"; };
 		F47F1E272C1B785800050947 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDefault.swift; sourceTree = "<group>"; };
+		F47F1E312C1C820500050947 /* DocumentFileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileContainer.swift; sourceTree = "<group>"; };
 		F4E8C7F22C1B4B5900BEF570 /* MeshBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeshBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBuddyApp.swift; sourceTree = "<group>"; };
 		F4E8C7F72C1B4B5900BEF570 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,10 +50,19 @@
 		F47F1E212C1B6D8500050947 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */,
+				F47F1E312C1C820500050947 /* DocumentFileContainer.swift */,
 				F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */,
+				F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F47F1E2E2C1C809600050947 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		F4E8C7E92C1B4B5900BEF570 = {
@@ -72,12 +85,13 @@
 		F4E8C7F42C1B4B5900BEF570 /* MeshBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				F47F1E242C1B6E0400050947 /* Info.plist */,
+				F47F1E2E2C1C809600050947 /* Utilities */,
 				F47F1E212C1B6D8500050947 /* Model */,
 				F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */,
 				F4E8C7F72C1B4B5900BEF570 /* ContentView.swift */,
 				F47F1E252C1B716200050947 /* DocumentConfigurationSheet.swift */,
 				F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */,
+				F47F1E242C1B6E0400050947 /* Info.plist */,
 				F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */,
 				F4E8C7FE2C1B4B5A00BEF570 /* MeshBuddy.entitlements */,
 				F4E8C7FB2C1B4B5A00BEF570 /* Preview Content */,
@@ -163,9 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */,
 				F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */,
 				F4E8C7F82C1B4B5900BEF570 /* ContentView.swift in Sources */,
 				F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */,
+				F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */,
 				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
 				F47F1E262C1B716500050947 /* DocumentConfigurationSheet.swift in Sources */,
 				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
