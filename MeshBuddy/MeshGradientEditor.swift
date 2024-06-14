@@ -14,33 +14,47 @@ struct MeshGradientEditor: View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
-                    let visibilityHelp: LocalizedStringKey = controlsVisible ? "Hide Controls" : "Show Controls"
-                    Toggle(
-                        visibilityHelp,
-                        systemImage: "square.on.square.squareshape.controlhandles",
-                        isOn: $controlsVisible
-                    )
-                    .help(visibilityHelp)
-
-                    Button {
-                        withAnimation(.smooth) {
-                            gradient.distortPoints(frequency: 4, amplitude: 0.3)
-                        }
-                    } label: {
-                        Image(systemName: "wand.and.sparkles.inverse")
-                    }
-                    .help("Apply perlin noise")
-
-                    Button {
-                        withAnimation(.smooth) {
-                            gradient.randomize()
-                        }
-                    } label: {
-                        Image(systemName: "dice")
-                    }
-                    .help("Randomize points")
+                    primaryToolbar
                 }
             }
+    }
+
+    @ViewBuilder
+    private var primaryToolbar: some View {
+        let visibilityHelp: LocalizedStringKey = controlsVisible ? "Hide Controls" : "Show Controls"
+        Toggle(
+            visibilityHelp,
+            systemImage: "square.on.square.squareshape.controlhandles",
+            isOn: $controlsVisible
+        )
+        .help(visibilityHelp)
+
+        Button {
+            withAnimation(.smooth) {
+                gradient.distortPoints(frequency: 4, amplitude: 0.3)
+            }
+        } label: {
+            Image(systemName: "wand.and.sparkles.inverse")
+        }
+        .help("Apply perlin noise")
+
+        Button {
+            withAnimation(.smooth) {
+                gradient.randomize()
+            }
+        } label: {
+            Image(systemName: "dice")
+        }
+        .help("Randomize points")
+
+        Button {
+            withAnimation(.smooth) {
+                gradient.reset()
+            }
+        } label: {
+            Image(systemName: "eraser")
+        }
+        .help("Reset points")
     }
 }
 

@@ -38,7 +38,7 @@ struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codab
 }
 
 struct MeshGradientDefinition: Codable, Sendable {
-    var id: UUID = UUID()
+    var id: UUID
     var width: Int
     var height: Int
     var points: [MeshGradientPoint] {
@@ -63,7 +63,8 @@ struct MeshGradientDefinition: Codable, Sendable {
     private static func simdPoints(from points: [MeshGradientPoint]) -> [SIMD2<Float>] { points.map(\.simd) }
     private static func colors(from points: [MeshGradientPoint]) -> [Color] { points.map(\.color) }
 
-    init(width: Int, height: Int, smoothsColors: Bool = true, backgroundColor: Color = .clear, colorSpace: Gradient.ColorSpace = .device) {
+    init(id: UUID = UUID(), width: Int, height: Int, smoothsColors: Bool = true, backgroundColor: Color = .clear, colorSpace: Gradient.ColorSpace = .device) {
+        self.id = id
         self.width = width
         self.height = height
         self.smoothsColors = smoothsColors
@@ -163,6 +164,8 @@ extension MeshGradientDefinition {
     }
 }
 
+// MARK: - Editing Utilities
+
 extension MeshGradientDefinition {
     func indexForPoint(atRow row: Int, column: Int) -> Int { row * width + column }
 
@@ -211,5 +214,16 @@ extension MeshGradientDefinition {
                 point.y = Float.random(in: 0...1)
             }
         }
+    }
+
+    mutating func reset() {
+        self = MeshGradientDefinition(
+            id: id,
+            width: width,
+            height: height,
+            smoothsColors: smoothsColors,
+            backgroundColor: backgroundColor,
+            colorSpace: colorSpace
+        )
     }
 }

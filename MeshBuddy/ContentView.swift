@@ -12,7 +12,6 @@ struct ContentView: View {
                     showingConfigurationSheet = true
                 }
             }
-            .id(document.definition.id)
             .sheet(isPresented: $showingConfigurationSheet) {
                 DocumentConfigurationSheet(definition: $document.definition)
             }
