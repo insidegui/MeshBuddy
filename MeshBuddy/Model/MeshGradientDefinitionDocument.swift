@@ -3,9 +3,11 @@ import UniformTypeIdentifiers
 
 struct MeshGradientDefinitionDocument: FileDocument {
     var definition: MeshGradientDefinition
+    var needsSetup: Bool
 
-    init(definition: MeshGradientDefinition = .default) {
+    init(definition: MeshGradientDefinition = .default, needsSetup: Bool = true) {
         self.definition = definition
+        self.needsSetup = needsSetup
     }
 
     static var readableContentTypes: [UTType] { [.meshDefinition] }
@@ -17,7 +19,7 @@ struct MeshGradientDefinitionDocument: FileDocument {
 
         let container = try PropertyListDecoder.meshDefinition.decode(DocumentFileContainer.self, from: contents)
 
-        self.init(definition: container.definition)
+        self.init(definition: container.definition, needsSetup: false)
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {

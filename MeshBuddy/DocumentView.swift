@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct DocumentView: View {
     @Environment(\.undoManager)
     private var undoManager
 
@@ -11,11 +11,11 @@ struct ContentView: View {
     var body: some View {
         MeshGradientEditor(gradient: undoBinding)
             .task {
-                if document.definition.width <= 0 || document.definition.height <= 0 {
-                    showingConfigurationSheet = true
-                }
+                showingConfigurationSheet = document.needsSetup
             }
             .sheet(isPresented: $showingConfigurationSheet) {
+                document.needsSetup = false
+            } content: {
                 DocumentConfigurationSheet(definition: $document.definition)
             }
     }
