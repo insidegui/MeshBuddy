@@ -49,7 +49,7 @@ struct MeshGradientEditor: View {
 
         Button {
             withAnimation(.smooth) {
-                gradient.reset()
+                gradient.resetPointPositions()
             }
         } label: {
             Image(systemName: "eraser")
@@ -247,7 +247,7 @@ struct MeshGradientPointHandle: View {
 
 #if DEBUG
 #Preview {
-    @Previewable @State var definition = MeshGradientDefinition(width: 12, height: 12, backgroundColor: .indigo)
+    @Previewable @State var definition = MeshGradientDefinition.default
     MeshGradientEditor(gradient: $definition)
         .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
 }

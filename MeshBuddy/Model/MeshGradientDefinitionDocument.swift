@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 struct MeshGradientDefinitionDocument: FileDocument {
     var definition: MeshGradientDefinition
 
-    init(definition: MeshGradientDefinition = .init(width: 0, height: 0, backgroundColor: .white)) {
+    init(definition: MeshGradientDefinition = .default) {
         self.definition = definition
     }
 

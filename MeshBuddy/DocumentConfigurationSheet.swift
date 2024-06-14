@@ -3,7 +3,7 @@ import SwiftUI
 struct DocumentConfigurationSheet: View {
     @Binding var definition: MeshGradientDefinition
 
-    @State private var template = MeshGradientDefinition(width: 5, height: 5, backgroundColor: .indigo)
+    @State private var template = MeshGradientDefinition.default
 
     @Environment(\.dismiss)
     private var dismiss
@@ -31,21 +31,9 @@ struct DocumentConfigurationSheet: View {
     }
 }
 
-extension MeshGradientDefinition {
-    init(from template: Self) {
-        self.init(
-            width: template.width,
-            height: template.height,
-            smoothsColors: template.smoothsColors,
-            backgroundColor: template.backgroundColor,
-            colorSpace: template.colorSpace
-        )
-    }
-}
-
 #if DEBUG
 #Preview {
-    @Previewable @State var definition = MeshGradientDefinition(width: 4, height: 4)
+    @Previewable @State var definition = MeshGradientDefinition.default
 
     DocumentConfigurationSheet(definition: $definition)
 }

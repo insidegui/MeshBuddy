@@ -39,6 +39,8 @@ struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codab
 
 struct MeshGradientDefinition: Codable, Sendable {
     var id: UUID
+    var viewPortWidth: Int
+    var viewPortHeight: Int
     var width: Int
     var height: Int
     var points: [MeshGradientPoint] {
@@ -56,6 +58,8 @@ struct MeshGradientDefinition: Codable, Sendable {
     var smoothsColors: Bool
     var backgroundColor: Color
     var colorSpace: Gradient.ColorSpace
+    var colorPalette: [Color]
+    var colorDistribution: ColorDistributionStyle
 
     private(set) var simdPoints: [SIMD2<Float>]
     private(set) var colors: [Color]
@@ -63,21 +67,27 @@ struct MeshGradientDefinition: Codable, Sendable {
     private static func simdPoints(from points: [MeshGradientPoint]) -> [SIMD2<Float>] { points.map(\.simd) }
     private static func colors(from points: [MeshGradientPoint]) -> [Color] { points.map(\.color) }
 
-    init(id: UUID = UUID(), width: Int, height: Int, smoothsColors: Bool = true, backgroundColor: Color = .clear, colorSpace: Gradient.ColorSpace = .device) {
+    init(id: UUID = UUID(), viewPortWidth: Int, viewPortHeight: Int, width: Int, height: Int, colorPalette: [Color]?, colorDistribution: ColorDistributionStyle, smoothsColors: Bool = true, backgroundColor: Color = .clear, colorSpace: Gradient.ColorSpace = .device) {
         self.id = id
+        self.viewPortWidth = viewPortWidth
+        self.viewPortHeight = viewPortHeight
         self.width = width
         self.height = height
         self.smoothsColors = smoothsColors
         self.backgroundColor = backgroundColor
         self.colorSpace = colorSpace
         self.points = []
+        self.colorPalette = colorPalette ?? Color.meshColorPalette(width: width, height: height)
+        self.colorDistribution = colorDistribution
+
+        precondition(self.colorPalette.count >= 2, "Color palette must have at least two colors")
 
         for i in 0..<height {
             var row: [MeshGradientPoint] = []
             for j in 0..<width {
                 let x = Float(j) / Float(width - 1)
                 let y = Float(i) / Float(height - 1)
-                let point = MeshGradientPoint(x: x, y: y, color: j % 2 == 0 ? Color.indigo : Color.purple)
+                let point = MeshGradientPoint(x: x, y: y, color: .black)
                 row.append(point)
             }
             self.points.append(contentsOf: row)
@@ -85,6 +95,9 @@ struct MeshGradientDefinition: Codable, Sendable {
 
         self.simdPoints = MeshGradientDefinition.simdPoints(from: self.points)
         self.colors = MeshGradientDefinition.colors(from: self.points)
+
+        /// Do initial color distribution.
+        distributeColors(using: colorDistribution)
     }
 
     func indexForPoint(with id: MeshGradientPoint.ID) -> Int {
@@ -216,14 +229,116 @@ extension MeshGradientDefinition {
         }
     }
 
-    mutating func reset() {
-        self = MeshGradientDefinition(
-            id: id,
-            width: width,
-            height: height,
-            smoothsColors: smoothsColors,
-            backgroundColor: backgroundColor,
-            colorSpace: colorSpace
+    mutating func resetPointPositions() {
+        mutatePoints { point, index, row, column, width, height in
+            let x = Float(column) / Float(width - 1)
+            let y = Float(row) / Float(height - 1)
+            point.x = x
+            point.y = y
+        }
+    }
+}
+
+// MARK: - Color Distribution
+
+enum ColorDistributionStyle: String, CaseIterable, Identifiable, Codable {
+    var id: RawValue { rawValue }
+
+    case uniform
+    case random
+
+    var localizedTitle: LocalizedStringKey {
+        switch self {
+        case .uniform:
+            return "Uniform"
+        case .random:
+            return "Random"
+        }
+    }
+}
+
+extension MeshGradientDefinition {
+    mutating func distributeColors(using style: ColorDistributionStyle) {
+        self.colorDistribution = style
+
+        var currentColorIndex = 0
+        let colors = self.colorPalette
+
+        mutatePoints { point, index, row, column, width, height in
+            switch style {
+            case .uniform:
+                point.color = colors[currentColorIndex]
+                if currentColorIndex < colors.count - 1 {
+                    currentColorIndex += 1
+                } else {
+                    currentColorIndex = 0
+                }
+            case .random:
+                point.color = colors.randomElement()!
+            }
+        }
+    }
+}
+
+// MARK: - Templates
+
+extension MeshGradientDefinition {
+    static let `default` = MeshGradientDefinition(
+        id: UUID(),
+        viewPortWidth: 512,
+        viewPortHeight: 512,
+        width: 5,
+        height: 5,
+        colorPalette: nil,
+        colorDistribution: .uniform,
+        smoothsColors: true,
+        backgroundColor: .white,
+        colorSpace: .device
+    )
+}
+
+extension MeshGradientDefinition {
+    init(from template: Self) {
+        self.init(
+            viewPortWidth: template.viewPortWidth,
+            viewPortHeight: template.viewPortHeight,
+            width: template.width,
+            height: template.height,
+            colorPalette: template.colorPalette,
+            colorDistribution: template.colorDistribution,
+            smoothsColors: template.smoothsColors,
+            backgroundColor: template.backgroundColor,
+            colorSpace: template.colorSpace
         )
+    }
+}
+
+extension Color {
+    static let systemColors: [Color] = [
+        .red,
+        .green,
+        .blue,
+        .orange,
+        .yellow,
+        .pink,
+        .purple,
+        .indigo,
+        .cyan,
+        .mint,
+        .teal
+    ]
+}
+
+extension Color {
+    static func randomSystemColors(count: Int) -> [Color] {
+        (0..<count).map { _ in systemColors.randomElement()! }
+    }
+
+    static func randomSystemColor() -> Color { randomSystemColors(count: 1)[0] }
+
+    static func meshColorPalette(width: Int, height: Int) -> [Color] {
+        let colorCount = min(6, max(width, height))
+
+        return randomSystemColors(count: colorCount)
     }
 }
