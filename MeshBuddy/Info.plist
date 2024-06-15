@@ -17,6 +17,12 @@
 			</array>
 		</dict>
 	</array>
+	<key>SUFeedURL</key>
+	<string>https://update.meshbuddy.app/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>$(MB_SPARKLE_PUBLIC_ED_KEY)</string>
+	<key>SUScheduledCheckInterval</key>
+	<string>$(MB_SPARKLE_CHECK_INTERVAL)</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
