@@ -1,5 +1,9 @@
 # MeshBuddy
 
+![screenshot](./screenshot.png)
+
+**Requires macOS 15 (Sequoia)**
+
 A simple SwiftUI `MeshGradient` editor with the following features:
 
 - [X] Setup mesh gradient with custom width, height, and canvas (image) size
@@ -15,7 +19,3 @@ A simple SwiftUI `MeshGradient` editor with the following features:
 
 - The canvas will always fit to the size of the window, so if the canvas size is very large and the window is small, the control points can be difficult to manipulate (workaround: use a smaller canvas size and change it before exporting an image)
 - Randomization features could be better, the results are not very interesting right now
-
-**Requires macOS 15 (Sequoia)**
-
-![screenshot](./screenshot.png)
