@@ -46,6 +46,8 @@ struct DocumentView: View {
 
             self.document.definition = newValue
 
+            guard newValue != oldValue else { return }
+
             undoManager.registerUndo(withTarget: NSApplication.shared) { target in
                 self.document.definition = oldValue
             }

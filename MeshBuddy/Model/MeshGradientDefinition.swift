@@ -37,7 +37,7 @@ struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codab
     }
 }
 
-struct MeshGradientDefinition: Codable, Sendable {
+struct MeshGradientDefinition: Codable, Sendable, Hashable {
     var id: UUID
     var viewPortWidth: Int
     var viewPortHeight: Int
