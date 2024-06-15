@@ -15,6 +15,9 @@
 		F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
 		F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */; };
 		F4B0FE802C1DEB4F00BA897C /* ColorDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */; };
+		F4B0FE822C1DFEFD00BA897C /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */; };
+		F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */; };
+		F4B0FE882C1E369500BA897C /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE872C1E369300BA897C /* Gradient+Image.swift */; };
 		F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */; };
 		F4E8C7F82C1B4B5900BEF570 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */; };
 		F4E8C7FA2C1B4B5A00BEF570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		F47F1E312C1C820500050947 /* DocumentFileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileContainer.swift; sourceTree = "<group>"; };
 		F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientInspector.swift; sourceTree = "<group>"; };
 		F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDrop.swift; sourceTree = "<group>"; };
+		F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
+		F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+Document.swift"; sourceTree = "<group>"; };
+		F4B0FE872C1E369300BA897C /* Gradient+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+Image.swift"; sourceTree = "<group>"; };
 		F4E8C7F22C1B4B5900BEF570 /* MeshBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeshBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBuddyApp.swift; sourceTree = "<group>"; };
 		F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
@@ -64,8 +70,11 @@
 		F47F1E2E2C1C809600050947 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */,
 				F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */,
 				F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */,
+				F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */,
+				F4B0FE872C1E369300BA897C /* Gradient+Image.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -187,12 +196,15 @@
 				F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */,
 				F4B0FE802C1DEB4F00BA897C /* ColorDrop.swift in Sources */,
 				F4E8C7F82C1B4B5900BEF570 /* DocumentView.swift in Sources */,
+				F4B0FE822C1DFEFD00BA897C /* ImageExporter.swift in Sources */,
 				F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */,
 				F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */,
 				F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */,
 				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
+				F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */,
 				F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */,
 				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
+				F4B0FE882C1E369500BA897C /* Gradient+Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

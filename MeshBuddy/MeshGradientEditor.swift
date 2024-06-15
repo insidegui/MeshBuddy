@@ -7,6 +7,8 @@ struct MeshGradientEditor: View {
     @AppStorage("controlsVisible")
     private var controlsVisible = true
 
+    @State private var exporter = ImageExporter()
+
     var body: some View {
         MeshGradientCanvas(gradient: $gradient, selectedPoints: $selectedPoints, controlsVisible: $controlsVisible)
             .inspector(isPresented: .constant(true)) {
@@ -55,6 +57,16 @@ struct MeshGradientEditor: View {
             Image(systemName: "eraser")
         }
         .help("Reset points")
+
+        Button {
+            Task {
+                await exporter.runExportPanel(for: gradient)
+            }
+        } label: {
+            Image(systemName: "photo.badge.arrow.down")
+        }
+        .help("Export…")
+        .keyboardShortcut("e", modifiers: .command)
     }
 }
 
@@ -100,15 +112,7 @@ struct MeshGradientCanvas: View {
         ZStack {
             ZStack {
                 if gradient.width > 0 && gradient.height > 0 {
-                    MeshGradient(
-                        width: gradient.width,
-                        height: gradient.height,
-                        points: gradient.simdPoints,
-                        colors: gradient.colors,
-                        background: gradient.backgroundColor,
-                        smoothsColors: gradient.smoothsColors,
-                        colorSpace: gradient.colorSpace
-                    )
+                    MeshGradient(gradient)
                 }
 
                 ForEach(gradient.points) { point in
@@ -150,21 +154,11 @@ struct MeshGradientCanvas: View {
                                 selectedPoints = [targetPoint.id]
                             }
                         }
-                        print(targetPoint)
                     } else {
                         selectedPoints.removeAll()
                         /// Adding points not currently supported because adding arbitrary points doesn't work,
                         /// it would have to be a feature where an entire column/row can be added at a certain point.
                         return
-//                        print("New \(Int(Date.now.timeIntervalSinceReferenceDate))")
-//
-//                        let relativePosition = CGPoint(
-//                            x: value.location.x / viewPort.size.width,
-//                            y: value.location.y / viewPort.size.height
-//                        )
-//
-//                        let newPoint = gradient.addPoint(at: relativePosition, color: .indigo)
-//                        selectedPoints.insert(newPoint.id)
                     }
 
                     dragGestureCanModifySelection = false
@@ -187,6 +181,20 @@ struct MeshGradientCanvas: View {
                 dragReferenceTranslation = .zero
                 dragGestureCanModifySelection = true
             }
+    }
+}
+
+extension MeshGradient {
+    init(_ gradient: MeshGradientDefinition) {
+        self.init(
+            width: gradient.width,
+            height: gradient.height,
+            points: gradient.simdPoints,
+            colors: gradient.colors,
+            background: gradient.backgroundColor,
+            smoothsColors: gradient.smoothsColors,
+            colorSpace: gradient.colorSpace
+        )
     }
 }
 

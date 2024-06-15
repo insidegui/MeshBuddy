@@ -13,6 +13,8 @@ struct DocumentView: View {
 
     var body: some View {
         MeshGradientEditor(gradient: undoBinding)
+            .focusable()
+            .focusEffectDisabled()
             .task {
                 showingConfigurationSheet = document.needsSetup
             }
@@ -49,5 +51,6 @@ struct DocumentView: View {
             }
         }
     }
+
 }
 
