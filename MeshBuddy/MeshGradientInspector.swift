@@ -31,6 +31,8 @@ struct MeshGradientInspector: View {
                 Text("Gradient")
             }
 
+            ColorPaletteSection(gradient: $gradient)
+
             if !documentConfiguration {
                 Section {
                     ColorPicker("Color", selection: $gradient.colorBinding(for: selectedPoints))
@@ -42,6 +44,77 @@ struct MeshGradientInspector: View {
             }
         }
         .formStyle(.grouped)
+        .onColorPaletteDrop { droppedColors in
+            withAnimation(.smooth) {
+                gradient.distribute(palette: droppedColors, using: gradient.colorDistribution)
+            }
+        }
+    }
+}
+
+struct ColorPaletteSection: View {
+    @Binding var gradient: MeshGradientDefinition
+
+    @State private var colorPalette = [Color]()
+    @State private var distributionStyle = ColorDistributionStyle.uniform
+
+    var body: some View {
+        Section {
+            ForEach(colorPalette.indices, id: \.self) { i in
+                ColorPicker("Color \(i + 1)", selection: $colorPalette[i])
+                    .labeledContentStyle(ColorPickerLabelStyle())
+            }
+
+            Picker("Distribution", selection: $distributionStyle) {
+                ForEach(ColorDistributionStyle.allCases) { option in
+                    Text(option.localizedTitle)
+                        .tag(option)
+                }
+            }
+
+            LabeledContent {
+                Button("Apply") {
+                    withAnimation(.smooth) {
+                        gradient.distribute(palette: colorPalette, using: distributionStyle)
+                    }
+                }
+            } label: {
+
+            }
+            .controlSize(.small)
+        } header: {
+            /// Feels kinda gross to attach these onChange modifiers to the header, but I needed a view
+            /// that's not a ForEach-style container, which Section is, so there you go...
+            header
+                .onChange(of: gradient.colorPalette, initial: true) { _, newValue in
+                    self.colorPalette = newValue
+                }
+                .onChange(of: gradient.colorDistribution, initial: true) { _, newValue in
+                    self.distributionStyle = newValue
+                }
+        } footer: {
+            Text("Tip: you can drag and drop a comma-separated list of hex colors here to define the palette.")
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.leading)
+        }
+    }
+
+    @ViewBuilder
+    private var header: some View {
+        HStack {
+            Text("Color Palette")
+
+            Spacer()
+
+            Button {
+                colorPalette.append(Color.randomSystemColor())
+            } label: {
+                Image(systemName: "plus")
+            }
+            .buttonStyle(.borderless)
+            .help("Add Color")
+        }
     }
 }
 

@@ -97,7 +97,7 @@ struct MeshGradientDefinition: Codable, Sendable {
         self.colors = MeshGradientDefinition.colors(from: self.points)
 
         /// Do initial color distribution.
-        distributeColors(using: colorDistribution)
+        distribute(palette: self.colorPalette, using: colorDistribution)
     }
 
     func indexForPoint(with id: MeshGradientPoint.ID) -> Int {
@@ -276,23 +276,22 @@ enum ColorDistributionStyle: String, CaseIterable, Identifiable, Codable {
 }
 
 extension MeshGradientDefinition {
-    mutating func distributeColors(using style: ColorDistributionStyle) {
+    mutating func distribute(palette: [Color], using style: ColorDistributionStyle) {
         self.colorDistribution = style
 
         var currentColorIndex = 0
-        let colors = self.colorPalette
 
         mutatePoints { point, index, row, column, width, height in
             switch style {
             case .uniform:
-                point.color = colors[currentColorIndex]
-                if currentColorIndex < colors.count - 1 {
+                point.color = palette[currentColorIndex]
+                if currentColorIndex < palette.count - 1 {
                     currentColorIndex += 1
                 } else {
                     currentColorIndex = 0
                 }
             case .random:
-                point.color = colors.randomElement()!
+                point.color = palette.randomElement()!
             }
         }
     }
