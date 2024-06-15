@@ -31,9 +31,9 @@ struct MeshGradientInspector: View {
                 Text("Gradient")
             }
 
-            ColorPaletteSection(gradient: $gradient)
-
             if !documentConfiguration {
+                ColorPaletteSection(gradient: $gradient)
+
                 Section {
                     ColorPicker("Color", selection: $gradient.colorBinding(for: selectedPoints))
                         .labeledContentStyle(ColorPickerLabelStyle())
