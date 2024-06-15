@@ -17,7 +17,11 @@ struct MeshGradientDefinitionDocument: FileDocument {
             throw DocumentFileError.unableToLoadData
         }
 
-        let container = try PropertyListDecoder.meshDefinition.decode(DocumentFileContainer.self, from: contents)
+        try self.init(data: contents)
+    }
+
+    init(data: Data) throws {
+        let container = try PropertyListDecoder.meshDefinition.decode(DocumentFileContainer.self, from: data)
 
         self.init(definition: container.definition, needsSetup: false)
     }

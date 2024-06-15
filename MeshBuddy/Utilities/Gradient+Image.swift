@@ -18,17 +18,31 @@ enum ImageRenderingError: LocalizedError {
     }
 }
 
+@MainActor
 extension MeshGradientDefinition {
-    func renderImage(of type: UTType, to outputURL: URL) async throws {
+    func renderImage(of type: UTType, to outputURL: URL) throws {
         guard let destination = CGImageDestinationCreateWithURL(outputURL as CFURL, type.identifier as CFString, 1, nil) else {
             throw ImageRenderingError.destination
         }
 
-        try await renderImage(of: type, to: destination)
+        try renderImage(of: type, to: destination)
     }
 
-    func renderImage(of type: UTType, to destination: CGImageDestination) async throws {
-        let image = try await renderCGImage()
+    func renderImageData(of type: UTType) throws -> Data {
+        guard let data = CFDataCreateMutable(kCFAllocatorDefault, 0) else {
+            throw ImageRenderingError.destination
+        }
+        guard let destination = CGImageDestinationCreateWithData(data, type.identifier as CFString, 1, nil) else {
+            throw ImageRenderingError.destination
+        }
+
+        try renderImage(of: type, to: destination)
+
+        return data as Data
+    }
+
+    func renderImage(of type: UTType, to destination: CGImageDestination) throws {
+        let image = try renderCGImage()
 
         CGImageDestinationAddImage(destination, image, nil)
 
@@ -37,16 +51,16 @@ extension MeshGradientDefinition {
         }
     }
 
-    func renderCGImage() async throws -> CGImage {
-        let renderView = await MeshGradient(self)
+    func renderCGImage() throws -> CGImage {
+        let renderView = MeshGradient(self)
             .frame(
                 width: CGFloat(self.viewPortWidth),
                 height: CGFloat(self.viewPortHeight)
             )
         
-        let imageRenderer = await ImageRenderer(content: renderView)
+        let imageRenderer = ImageRenderer(content: renderView)
 
-        guard let image = await imageRenderer.cgImage else {
+        guard let image = imageRenderer.cgImage else {
             throw ImageRenderingError.cgImage
         }
 

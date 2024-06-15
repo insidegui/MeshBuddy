@@ -15,6 +15,15 @@
 		F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
 		F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */; };
 		F4A3254B2C1E3F01008B4597 /* Main.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */; };
+		F4A325532C1E485D008B4597 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A325522C1E485C008B4597 /* Quartz.framework */; };
+		F4A325582C1E485D008B4597 /* MeshPreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */; };
+		F4A325602C1E485D008B4597 /* MeshQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F4A325502C1E485C008B4597 /* MeshQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4A325652C1E48B8008B4597 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
+		F4A325662C1E48B8008B4597 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
+		F4A325672C1E48B8008B4597 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
+		F4A325692C1E48C6008B4597 /* MeshGradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325682C1E48C3008B4597 /* MeshGradient+.swift */; };
+		F4A3256A2C1E48D1008B4597 /* MeshGradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325682C1E48C3008B4597 /* MeshGradient+.swift */; };
+		F4A3256B2C1E49AD008B4597 /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE872C1E369300BA897C /* Gradient+Image.swift */; };
 		F4B0FE802C1DEB4F00BA897C /* ColorDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */; };
 		F4B0FE822C1DFEFD00BA897C /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */; };
 		F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */; };
@@ -27,6 +36,30 @@
 		F4E8C7FD2C1B4B5A00BEF570 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E8C7FC2C1B4B5A00BEF570 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F4A3255E2C1E485D008B4597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4E8C7EA2C1B4B5900BEF570 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4A3254F2C1E485C008B4597;
+			remoteInfo = MeshQuickLook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4A325642C1E485D008B4597 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F4A325602C1E485D008B4597 /* MeshQuickLook.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientEditor.swift; sourceTree = "<group>"; };
 		F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinition.swift; sourceTree = "<group>"; };
@@ -38,6 +71,12 @@
 		F47F1E312C1C820500050947 /* DocumentFileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileContainer.swift; sourceTree = "<group>"; };
 		F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientInspector.swift; sourceTree = "<group>"; };
 		F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
+		F4A325502C1E485C008B4597 /* MeshQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeshQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4A325522C1E485C008B4597 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshPreviewProvider.swift; sourceTree = "<group>"; };
+		F4A3255C2C1E485D008B4597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4A3255D2C1E485D008B4597 /* MeshQuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeshQuickLook.entitlements; sourceTree = "<group>"; };
+		F4A325682C1E48C3008B4597 /* MeshGradient+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeshGradient+.swift"; sourceTree = "<group>"; };
 		F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDrop.swift; sourceTree = "<group>"; };
 		F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
 		F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+Document.swift"; sourceTree = "<group>"; };
@@ -52,6 +91,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F4A3254D2C1E485C008B4597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4A325532C1E485D008B4597 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E8C7EF2C1B4B5900BEF570 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +128,7 @@
 				F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */,
 				F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */,
 				F4B0FE872C1E369300BA897C /* Gradient+Image.swift */,
+				F4A325682C1E48C3008B4597 /* MeshGradient+.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -91,6 +139,24 @@
 				F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		F4A325512C1E485C008B4597 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4A325522C1E485C008B4597 /* Quartz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4A325542C1E485D008B4597 /* MeshQuickLook */ = {
+			isa = PBXGroup;
+			children = (
+				F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */,
+				F4A3255C2C1E485D008B4597 /* Info.plist */,
+				F4A3255D2C1E485D008B4597 /* MeshQuickLook.entitlements */,
+			);
+			path = MeshQuickLook;
 			sourceTree = "<group>";
 		};
 		F4B0FE8D2C1E3DBF00BA897C /* AppUpdates */ = {
@@ -106,6 +172,8 @@
 			children = (
 				F47F1E272C1B785800050947 /* README.md */,
 				F4E8C7F42C1B4B5900BEF570 /* MeshBuddy */,
+				F4A325542C1E485D008B4597 /* MeshQuickLook */,
+				F4A325512C1E485C008B4597 /* Frameworks */,
 				F4E8C7F32C1B4B5900BEF570 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E8C7F22C1B4B5900BEF570 /* MeshBuddy.app */,
+				F4A325502C1E485C008B4597 /* MeshQuickLook.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +218,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F4A3254F2C1E485C008B4597 /* MeshQuickLook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4A325612C1E485D008B4597 /* Build configuration list for PBXNativeTarget "MeshQuickLook" */;
+			buildPhases = (
+				F4A3254C2C1E485C008B4597 /* Sources */,
+				F4A3254D2C1E485C008B4597 /* Frameworks */,
+				F4A3254E2C1E485C008B4597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeshQuickLook;
+			productName = MeshQuickLook;
+			productReference = F4A325502C1E485C008B4597 /* MeshQuickLook.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F4E8C7F12C1B4B5900BEF570 /* MeshBuddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E8C8012C1B4B5A00BEF570 /* Build configuration list for PBXNativeTarget "MeshBuddy" */;
@@ -156,10 +242,12 @@
 				F4E8C7EE2C1B4B5900BEF570 /* Sources */,
 				F4E8C7EF2C1B4B5900BEF570 /* Frameworks */,
 				F4E8C7F02C1B4B5900BEF570 /* Resources */,
+				F4A325642C1E485D008B4597 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F4A3255F2C1E485D008B4597 /* PBXTargetDependency */,
 			);
 			name = MeshBuddy;
 			packageProductDependencies = (
@@ -179,6 +267,9 @@
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					F4A3254F2C1E485C008B4597 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					F4E8C7F12C1B4B5900BEF570 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -201,11 +292,19 @@
 			projectRoot = "";
 			targets = (
 				F4E8C7F12C1B4B5900BEF570 /* MeshBuddy */,
+				F4A3254F2C1E485C008B4597 /* MeshQuickLook */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F4A3254E2C1E485C008B4597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E8C7F02C1B4B5900BEF570 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +318,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F4A3254C2C1E485C008B4597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4A3256B2C1E49AD008B4597 /* Gradient+Image.swift in Sources */,
+				F4A3256A2C1E48D1008B4597 /* MeshGradient+.swift in Sources */,
+				F4A325652C1E48B8008B4597 /* DocumentFileContainer.swift in Sources */,
+				F4A325662C1E48B8008B4597 /* MeshGradientDefinitionDocument.swift in Sources */,
+				F4A325672C1E48B8008B4597 /* MeshGradientDefinition.swift in Sources */,
+				F4A325582C1E485D008B4597 /* MeshPreviewProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E8C7EE2C1B4B5900BEF570 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +345,7 @@
 				F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */,
 				F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */,
 				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
+				F4A325692C1E48C6008B4597 /* MeshGradient+.swift in Sources */,
 				F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */,
 				F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */,
 				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
@@ -242,7 +355,63 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F4A3255F2C1E485D008B4597 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4A3254F2C1E485C008B4597 /* MeshQuickLook */;
+			targetProxy = F4A3255E2C1E485D008B4597 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F4A325622C1E485D008B4597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MeshQuickLook/MeshQuickLook.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8C7439RJLG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MeshQuickLook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MeshQuickLook;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.rambo.MeshBuddy.MeshQuickLook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F4A325632C1E485D008B4597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MeshQuickLook/MeshQuickLook.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8C7439RJLG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MeshQuickLook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MeshQuickLook;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codes.rambo.MeshBuddy.MeshQuickLook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		F4E8C7FF2C1B4B5A00BEF570 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */;
@@ -430,6 +599,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F4A325612C1E485D008B4597 /* Build configuration list for PBXNativeTarget "MeshQuickLook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4A325622C1E485D008B4597 /* Debug */,
+				F4A325632C1E485D008B4597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F4E8C7ED2C1B4B5900BEF570 /* Build configuration list for PBXProject "MeshBuddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

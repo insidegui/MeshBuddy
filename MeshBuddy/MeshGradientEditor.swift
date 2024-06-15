@@ -72,12 +72,6 @@ struct MeshGradientEditor: View {
 
 // MARK: - Canvas
 
-extension MeshGradientDefinition {
-    var bounds: CGRect {
-        CGRect(x: 0, y: 0, width: viewPortWidth, height: viewPortHeight)
-    }
-}
-
 struct MeshGradientCanvas: View {
 
     @Binding var gradient: MeshGradientDefinition
@@ -184,22 +178,8 @@ struct MeshGradientCanvas: View {
     }
 }
 
-extension MeshGradient {
-    init(_ gradient: MeshGradientDefinition) {
-        self.init(
-            width: gradient.width,
-            height: gradient.height,
-            points: gradient.simdPoints,
-            colors: gradient.colors,
-            background: gradient.backgroundColor,
-            smoothsColors: gradient.smoothsColors,
-            colorSpace: gradient.colorSpace
-        )
-    }
-}
-
 struct MeshGradientPointHandle: View {
-    nonisolated static var size: CGFloat { 12 }
+    nonisolated static var size: CGFloat { MeshBuddyMetrics.pointHandleSize }
 
     var point: MeshGradientPoint
     var viewPort: CGRect

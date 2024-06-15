@@ -1,6 +1,10 @@
 import SwiftUI
 import GameKit
 
+struct MeshBuddyMetrics {
+    static let pointHandleSize: CGFloat = 12
+}
+
 struct MeshGradientPoint: Identifiable, Hashable, CustomStringConvertible, Codable, Sendable {
     var id: UUID = UUID()
     var simd: SIMD2<Float>
@@ -139,7 +143,7 @@ struct MeshGradientDefinition: Codable, Sendable, Hashable {
 }
 
 extension MeshGradientPoint {
-    func position(in viewPort: CGRect, handleSize: CGFloat = MeshGradientPointHandle.size) -> CGPoint {
+    func position(in viewPort: CGRect, handleSize: CGFloat = MeshBuddyMetrics.pointHandleSize) -> CGPoint {
         var pos = CGPoint(
             x: viewPort.origin.x * Double(x) + viewPort.size.width * Double(x),
             y: viewPort.origin.y * Double(y) + viewPort.size.height * Double(y)
@@ -160,7 +164,7 @@ extension MeshGradientPoint {
         return pos
     }
 
-    func handleFrame(in viewPort: CGRect, handleSize: CGFloat = MeshGradientPointHandle.size) -> CGRect {
+    func handleFrame(in viewPort: CGRect, handleSize: CGFloat = MeshBuddyMetrics.pointHandleSize) -> CGRect {
         let pos = position(in: viewPort, handleSize: handleSize)
         return CGRect(
             x: pos.x - handleSize * 0.5,
@@ -172,7 +176,7 @@ extension MeshGradientPoint {
 }
 
 extension MeshGradientDefinition {
-    func point(at location: CGPoint, in viewPort: CGRect, handleSize: CGFloat = MeshGradientPointHandle.size) -> MeshGradientPoint? {
+    func point(at location: CGPoint, in viewPort: CGRect, handleSize: CGFloat = MeshBuddyMetrics.pointHandleSize) -> MeshGradientPoint? {
         self.points.first { $0.handleFrame(in: viewPort, handleSize: handleSize).contains(location) }
     }
 }
@@ -254,6 +258,10 @@ extension MeshGradientDefinition {
             point.x = x
             point.y = y
         }
+    }
+
+    var bounds: CGRect {
+        CGRect(x: 0, y: 0, width: viewPortWidth, height: viewPortHeight)
     }
 }
 
