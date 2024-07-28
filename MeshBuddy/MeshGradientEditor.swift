@@ -109,7 +109,7 @@ struct MeshGradientCanvas: View {
                     MeshGradient(gradient)
                 }
 
-                ForEach(gradient.points) { point in
+                ForEach($gradient.points) { point in
                     MeshGradientPointHandle(
                         point: point,
                         viewPort: gradient.bounds,
@@ -120,7 +120,7 @@ struct MeshGradientCanvas: View {
                 }
             }
             .contentShape(Rectangle())
-            .gesture(dragGesture(with: gradient.bounds))
+            .simultaneousGesture(dragGesture(with: gradient.bounds))
             .animation(.snappy, value: controlsVisible)
         }
         .frame(width: CGFloat(gradient.viewPortWidth), height: CGFloat(gradient.viewPortHeight))
@@ -181,23 +181,29 @@ struct MeshGradientCanvas: View {
 struct MeshGradientPointHandle: View {
     nonisolated static var size: CGFloat { MeshBuddyMetrics.pointHandleSize }
 
-    var point: MeshGradientPoint
+    @Binding var point: MeshGradientPoint
     var viewPort: CGRect
     var gradient: MeshGradientDefinition
     var isSelected: Bool
     var isVisible: Bool
+    
+    @State private var colorPickerDisabled = true
+    @State private var colorPickerActivationRecognizeTask: Task<Void, any Error>?
 
     var body: some View {
         let pos = point.position(in: viewPort)
 
-        Circle()
-            .fill(point.color)
-            .stroke(Color.white, lineWidth: isSelected ? 2 : 1)
-            .shadow(radius: 2)
-            .frame(width: Self.size, height: Self.size)
-            .opacity(isVisible ? 1 : 0)
-            .scaleEffect(isVisible ? 1 : 0.4)
-            .position(pos)
+        ColorPickerButton(selection: $point.color) {
+            Circle()
+                .fill(point.color)
+                .stroke(Color.white, lineWidth: isSelected ? 2 : 1)
+        }
+        .frame(width: Self.size, height: Self.size)
+        .clipShape(.circle)
+        .shadow(radius: 2)
+        .opacity(isVisible ? 1 : 0)
+        .scaleEffect(isVisible ? 1 : 0.4)
+        .position(pos)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		384874062C567542005D23C6 /* ColorPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384874052C567431005D23C6 /* ColorPickerButton.swift */; };
 		F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */; };
 		F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
 		F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		384874052C567431005D23C6 /* ColorPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerButton.swift; sourceTree = "<group>"; };
 		F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientEditor.swift; sourceTree = "<group>"; };
 		F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinition.swift; sourceTree = "<group>"; };
 		F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinitionDocument.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */,
 				F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */,
 				F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */,
+				384874052C567431005D23C6 /* ColorPickerButton.swift */,
 				F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */,
 				F47F1E242C1B6E0400050947 /* Info.plist */,
 				F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */,
@@ -346,6 +349,7 @@
 				F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */,
 				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
 				F4A325692C1E48C6008B4597 /* MeshGradient+.swift in Sources */,
+				384874062C567542005D23C6 /* ColorPickerButton.swift in Sources */,
 				F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */,
 				F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */,
 				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
