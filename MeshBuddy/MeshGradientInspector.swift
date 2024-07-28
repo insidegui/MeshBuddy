@@ -33,14 +33,6 @@ struct MeshGradientInspector: View {
 
             if !documentConfiguration {
                 ColorPaletteSection(gradient: $gradient)
-
-                Section {
-                    ColorPicker("Color", selection: $gradient.colorBinding(for: selectedPoints))
-                        .labeledContentStyle(ColorPickerLabelStyle())
-                        .disabled(selectedPoints.isEmpty)
-                } header: {
-                    Text("Selection")
-                }
             }
         }
         .formStyle(.grouped)
