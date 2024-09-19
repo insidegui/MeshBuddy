@@ -65,7 +65,7 @@ struct MeshGradientEditor: View {
         } label: {
             Label("Export", systemImage: "photo.badge.arrow.down")
         }
-        .help("Export…")
+        .help("Export as image…")
         .keyboardShortcut("e", modifiers: .command)
     }
 }
