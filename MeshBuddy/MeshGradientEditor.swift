@@ -36,7 +36,7 @@ struct MeshGradientEditor: View {
                 gradient.distortPoints(frequency: 4, amplitude: 0.3)
             }
         } label: {
-            Image(systemName: "wand.and.sparkles.inverse")
+            Label("Perlin Noise", systemImage: "wand.and.sparkles.inverse")
         }
         .help("Apply perlin noise")
 
@@ -45,7 +45,7 @@ struct MeshGradientEditor: View {
                 gradient.randomizeMesh()
             }
         } label: {
-            Image(systemName: "dice")
+            Label("Randomize", systemImage: "dice")
         }
         .help("Randomize mesh")
 
@@ -54,7 +54,7 @@ struct MeshGradientEditor: View {
                 gradient.resetPointPositions()
             }
         } label: {
-            Image(systemName: "eraser")
+            Label("Reset", systemImage: "eraser")
         }
         .help("Reset points")
 
@@ -63,7 +63,7 @@ struct MeshGradientEditor: View {
                 await exporter.runExportPanel(for: gradient)
             }
         } label: {
-            Image(systemName: "photo.badge.arrow.down")
+            Label("Export", systemImage: "photo.badge.arrow.down")
         }
         .help("Export…")
         .keyboardShortcut("e", modifiers: .command)
