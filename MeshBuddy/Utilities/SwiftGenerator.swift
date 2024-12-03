@@ -6,9 +6,6 @@ struct SwiftGenerator {
      Generates sample Swift code for the provided gradient definition.
      
      - parameter input: The mesh definition to create Swift code for
-     
-     - note: Due to color conversions and float point handling, the colors can come out unexpected. For instance, a background color of `.white` would be expected to have values of `red: 1, green: 1, blue: 1`, but may be generated as `red: 0.9999999403953552, green: 1.0, blue: 1.0`. If a workaround can be found to reliably round and keep these values intact, this can be refactored to support it.
-     
      - returns: Swift code to generate the provided mesh gradient
      */
     static func generateOutput(_ input: MeshGradientDefinition) -> String {
