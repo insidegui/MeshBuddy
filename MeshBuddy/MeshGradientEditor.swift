@@ -67,6 +67,8 @@ struct MeshGradientEditor: View {
         }
         .help("Export as image…")
         .keyboardShortcut("e", modifiers: .command)
+
+        ViewSwiftCodeButton(gradient: gradient)
     }
 }
 
