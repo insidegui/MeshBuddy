@@ -1,15 +1,11 @@
 import SwiftUI
 
 extension Color {
-    var nsColor: NSColor { NSColor(self) }
-}
+    func swiftUIInitializer(in environmentValues: EnvironmentValues) -> String {
+        let resolvedColor = self.resolve(in: environmentValues)
+        let opacity = resolvedColor.opacity == 1 ? "" : ", opacity: \(resolvedColor.opacity)"
 
-
-extension NSColor {
-    /// Text to create the equivalent `SwiftUI.Color` object in code
-    var swiftUIInitializer: String {
-        let opacity = self.alphaComponent.isOne ? "" : ", opacity: \(self.alphaComponent)"
-        return "Color(red: \(self.redComponent.roundedValue), green: \(self.greenComponent.roundedValue), blue: \(self.blueComponent.roundedValue)\(opacity))"
+        return "Color(red: \(resolvedColor.red.roundedValue), green: \(resolvedColor.green.roundedValue), blue: \(resolvedColor.blue.roundedValue)\(opacity))"
     }
 }
 
@@ -32,10 +28,10 @@ extension Gradient.ColorSpace {
 }
 
 
-extension CGFloat {
+extension Float {
     /// This float as a string rounded to `4` decimal places
     private var roundedString: String {
-        String(format: "%.4f", self)
+        String(format: "%.3f", self)
     }
     
     /// The basic rounded value of this float
@@ -49,7 +45,7 @@ extension CGFloat {
     /**
      Whether this float is equivalent to `1` after rounding.
      */
-    var isOne: Bool {
+    private var isOne: Bool {
         guard let double = Double(roundedString) else { return false }
         return Int(double) == 1
     }
