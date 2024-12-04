@@ -59,6 +59,7 @@ struct SwiftCodeWindow: Scene {
                 SwiftCodeView(gradient: gradient)
             }
         }
+        .commandsRemoved()
     }
 }
 
