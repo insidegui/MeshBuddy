@@ -13,7 +13,7 @@ A simple SwiftUI `MeshGradient` editor with the following features:
 - [X] Drag and drop color palettes from [Pastel](https://apps.apple.com/us/app/pastel/id413897608)
 - [X] Randomize mesh with perlin noise or pseudo-random generator
 - [X] Image export
-- [ ] Swift code generation
+- [X] Swift code generation
 
 **Known Limitations:**
 
