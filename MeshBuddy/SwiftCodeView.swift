@@ -2,11 +2,13 @@ import SwiftUI
 
 
 struct SwiftCodeView: View {
+    @Environment(\.self) private var environment
+    
     var gradient: MeshGradientDefinition
     private let generatedDate = Date()
     
     private var output: String {
-        SwiftGenerator.generateOutput(gradient)
+        SwiftGenerator.generateOutput(gradient, in: environment)
     }
     
     var body: some View {
@@ -67,11 +69,11 @@ struct SwiftCodeWindow: Scene {
 struct ViewSwiftCodeButton: View {
     @Environment(\.openWindow) private var openWindow
     
-    var gradient: MeshGradientDefinition
+    var gradientProvider: () -> MeshGradientDefinition
     
     var body: some View {
         Button {
-            openWindow(value: gradient)
+            openWindow(value: gradientProvider())
         } label: {
             Label("View Swift code", systemImage: "text.rectangle.page")
         }
