@@ -13,5 +13,7 @@ struct MeshBuddyApp: App {
                 CheckForUpdatesButton(manager: updateManager)
             }
         }
+        
+        SwiftCodeWindow()
     }
 }

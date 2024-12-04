@@ -55,6 +55,14 @@ struct ColorPaletteSection: View {
             ForEach(colorPalette.indices, id: \.self) { i in
                 ColorPicker("Color \(i + 1)", selection: $colorPalette[i])
                     .labeledContentStyle(ColorPickerLabelStyle())
+                    .contentShape(.rect)
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            colorPalette.remove(at: i)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
             }
 
             Picker("Distribution", selection: $distributionStyle) {
