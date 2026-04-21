@@ -3,7 +3,7 @@ import Observation
 
 @main
 struct MeshBuddyApp: App {
-    private let updateManager = AppUpdateManager()
+    @State private var updateManager = AppUpdateManager()
 
     var body: some Scene {
         DocumentGroup(newDocument: MeshGradientDefinitionDocument()) { configuration in
