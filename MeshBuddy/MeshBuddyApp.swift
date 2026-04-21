@@ -5,6 +5,10 @@ import Observation
 struct MeshBuddyApp: App {
     @State private var updateManager = AppUpdateManager()
 
+    init() {
+        AcceptsFirstMouseSwizzle.install()
+    }
+
     var body: some Scene {
         DocumentGroup(newDocument: MeshGradientDefinitionDocument()) { configuration in
             DocumentView(document: configuration.$document)
