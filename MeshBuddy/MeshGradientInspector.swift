@@ -26,7 +26,7 @@ struct MeshGradientInspector: View {
                 }
 
                 ColorPicker("Background", selection: $gradient.backgroundColor)
-                    .labeledContentStyle(ColorPickerLabelStyle())
+                    .labeledContentStyle(.centered)
             } header: {
                 Text("Gradient")
             }
@@ -52,18 +52,7 @@ struct ColorPaletteSection: View {
 
     var body: some View {
         Section {
-            ForEach(colorPalette.indices, id: \.self) { i in
-                ColorPicker("Color \(i + 1)", selection: $colorPalette[i])
-                    .labeledContentStyle(ColorPickerLabelStyle())
-                    .contentShape(.rect)
-                    .contextMenu {
-                        Button(role: .destructive) {
-                            colorPalette.remove(at: i)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
-            }
+            ColorPaletteList(colorPalette: $colorPalette)
 
             Picker("Distribution", selection: $distributionStyle) {
                 ForEach(ColorDistributionStyle.allCases) { option in
@@ -72,16 +61,12 @@ struct ColorPaletteSection: View {
                 }
             }
 
-            LabeledContent {
-                Button("Apply") {
-                    withAnimation(.smooth) {
-                        gradient.distribute(palette: colorPalette, using: distributionStyle)
-                    }
+            Button("Apply") {
+                withAnimation(.smooth) {
+                    gradient.distribute(palette: colorPalette, using: distributionStyle)
                 }
-            } label: {
-
             }
-            .controlSize(.small)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         } header: {
             /// Feels kinda gross to attach these onChange modifiers to the header, but I needed a view
             /// that's not a ForEach-style container, which Section is, so there you go...
@@ -92,11 +77,6 @@ struct ColorPaletteSection: View {
                 .onChange(of: gradient.colorDistribution, initial: true) { _, newValue in
                     self.distributionStyle = newValue
                 }
-        } footer: {
-            Text("Tip: you can drag and drop a comma-separated list of hex colors here to define the palette.")
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .multilineTextAlignment(.leading)
         }
     }
 
@@ -118,7 +98,63 @@ struct ColorPaletteSection: View {
     }
 }
 
-struct ColorPickerLabelStyle: LabeledContentStyle {
+private struct ColorPaletteList: View {
+    @Binding var colorPalette: [Color]
+    @State private var selection: Set<Int> = []
+
+    @Environment(\.undoManager)
+    private var undoManager
+
+    var body: some View {
+        List(selection: $selection) {
+            ForEach(Array(colorPalette.indices), id: \.self) { index in
+                ColorPaletteRow(
+                    title: "Color \(index + 1)",
+                    color: $colorPalette[index]
+                ) {
+                    colorPalette.remove(at: index)
+                }
+                .tag(index)
+            }
+            .onDelete(perform: deleteColors)
+        }
+        .onDeleteCommand {
+            guard !selection.isEmpty else { return }
+            deleteColors(at: IndexSet(selection))
+        }
+    }
+
+    private func deleteColors(at offsets: IndexSet) {
+        guard colorPalette.count > 2 else { return }
+        let validOffsets = offsets.suffix(max(1, colorPalette.count - 2))
+        colorPalette.remove(atOffsets: IndexSet(validOffsets))
+    }
+}
+
+private struct ColorPaletteRow: View {
+    let title: String
+    @Binding var color: Color
+    let onDelete: () -> Void
+
+    var body: some View {
+        ColorPicker(title, selection: $color)
+            .padding(.vertical, 4)
+            .labeledContentStyle(.centered)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(.rect)
+            .contextMenu {
+                Button(role: .destructive, action: onDelete) {
+                    Label("Delete", systemImage: "trash")
+                }
+            }
+    }
+}
+
+extension LabeledContentStyle where Self == CenteredLabelStyle {
+    static var centered: CenteredLabelStyle { CenteredLabelStyle() }
+}
+
+struct CenteredLabelStyle: LabeledContentStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack(alignment: .center) {
             configuration.label
@@ -129,6 +165,7 @@ struct ColorPickerLabelStyle: LabeledContentStyle {
                 .content
                 .controlSize(.small)
         }
+        .padding(.vertical, 2)
     }
 }
 
@@ -164,6 +201,6 @@ extension Binding where Value == MeshGradientDefinition {
     )
     
     MeshGradientInspector(gradient: $gradient, selectedPoints: .constant([]))
-        .frame(width: 340, height: 600)
+        .frame(width: 340, height: 800)
 }
 #endif

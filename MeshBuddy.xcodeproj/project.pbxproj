@@ -3,41 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		384874062C567542005D23C6 /* ColorPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384874052C567431005D23C6 /* ColorPickerButton.swift */; };
-		46374A632CFE749300F23EB1 /* SwiftGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46374A622CFE749100F23EB1 /* SwiftGenerator.swift */; };
-		46374A652CFE7EC500F23EB1 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46374A642CFE7EC300F23EB1 /* Color+.swift */; };
-		46374A692CFE8A2F00F23EB1 /* SwiftCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46374A682CFE8A2F00F23EB1 /* SwiftCodeView.swift */; };
-		F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */; };
-		F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
-		F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
-		F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */; };
-		F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */; };
-		F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
-		F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */; };
-		F4A3254B2C1E3F01008B4597 /* Main.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */; };
 		F4A325532C1E485D008B4597 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A325522C1E485C008B4597 /* Quartz.framework */; };
-		F4A325582C1E485D008B4597 /* MeshPreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */; };
 		F4A325602C1E485D008B4597 /* MeshQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F4A325502C1E485C008B4597 /* MeshQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F4A325652C1E48B8008B4597 /* DocumentFileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E312C1C820500050947 /* DocumentFileContainer.swift */; };
-		F4A325662C1E48B8008B4597 /* MeshGradientDefinitionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */; };
-		F4A325672C1E48B8008B4597 /* MeshGradientDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */; };
-		F4A325692C1E48C6008B4597 /* MeshGradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325682C1E48C3008B4597 /* MeshGradient+.swift */; };
-		F4A3256A2C1E48D1008B4597 /* MeshGradient+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A325682C1E48C3008B4597 /* MeshGradient+.swift */; };
-		F4A3256B2C1E49AD008B4597 /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE872C1E369300BA897C /* Gradient+Image.swift */; };
-		F4B0FE802C1DEB4F00BA897C /* ColorDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */; };
-		F4B0FE822C1DFEFD00BA897C /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */; };
-		F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */; };
-		F4B0FE882C1E369500BA897C /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE872C1E369300BA897C /* Gradient+Image.swift */; };
 		F4B0FE8C2C1E3D9200BA897C /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = F4B0FE8B2C1E3D9200BA897C /* Sparkle */; };
-		F4B0FE8F2C1E3DCB00BA897C /* AppUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0FE8E2C1E3DC600BA897C /* AppUpdateManager.swift */; };
-		F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */; };
-		F4E8C7F82C1B4B5900BEF570 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */; };
-		F4E8C7FA2C1B4B5A00BEF570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */; };
-		F4E8C7FD2C1B4B5A00BEF570 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E8C7FC2C1B4B5A00BEF570 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,38 +37,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		384874052C567431005D23C6 /* ColorPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerButton.swift; sourceTree = "<group>"; };
-		46374A622CFE749100F23EB1 /* SwiftGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGenerator.swift; sourceTree = "<group>"; };
-		46374A642CFE7EC300F23EB1 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
-		46374A682CFE8A2F00F23EB1 /* SwiftCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCodeView.swift; sourceTree = "<group>"; };
-		F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientEditor.swift; sourceTree = "<group>"; };
-		F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinition.swift; sourceTree = "<group>"; };
-		F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientDefinitionDocument.swift; sourceTree = "<group>"; };
-		F47F1E242C1B6E0400050947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSetupSheet.swift; sourceTree = "<group>"; };
 		F47F1E272C1B785800050947 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDefault.swift; sourceTree = "<group>"; };
-		F47F1E312C1C820500050947 /* DocumentFileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileContainer.swift; sourceTree = "<group>"; };
-		F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientInspector.swift; sourceTree = "<group>"; };
-		F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
 		F4A325502C1E485C008B4597 /* MeshQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeshQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A325522C1E485C008B4597 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshPreviewProvider.swift; sourceTree = "<group>"; };
-		F4A3255C2C1E485D008B4597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4A3255D2C1E485D008B4597 /* MeshQuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeshQuickLook.entitlements; sourceTree = "<group>"; };
-		F4A325682C1E48C3008B4597 /* MeshGradient+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeshGradient+.swift"; sourceTree = "<group>"; };
-		F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDrop.swift; sourceTree = "<group>"; };
-		F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
-		F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+Document.swift"; sourceTree = "<group>"; };
-		F4B0FE872C1E369300BA897C /* Gradient+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+Image.swift"; sourceTree = "<group>"; };
-		F4B0FE8E2C1E3DC600BA897C /* AppUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateManager.swift; sourceTree = "<group>"; };
 		F4E8C7F22C1B4B5900BEF570 /* MeshBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeshBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBuddyApp.swift; sourceTree = "<group>"; };
-		F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
-		F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F4E8C7FC2C1B4B5A00BEF570 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F4E8C7FE2C1B4B5A00BEF570 /* MeshBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeshBuddy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F474AF112F981E4600592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MeshPreviewProvider.swift,
+			);
+			target = F4A3254F2C1E485C008B4597 /* MeshQuickLook */;
+		};
+		F474AF4C2F981E4B00592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Config/Main.xcconfig,
+				Info.plist,
+			);
+			target = F4E8C7F12C1B4B5900BEF570 /* MeshBuddy */;
+		};
+		F474AF4D2F981E4B00592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/DocumentFileContainer.swift,
+				Model/MeshGradientDefinition.swift,
+				Model/MeshGradientDefinitionDocument.swift,
+				"Utilities/Gradient+Image.swift",
+				"Utilities/MeshGradient+.swift",
+			);
+			target = F4A3254F2C1E485C008B4597 /* MeshQuickLook */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F474AF0F2F981E4500592539 /* MeshQuickLook */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F474AF112F981E4600592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = MeshQuickLook; sourceTree = "<group>"; };
+		F474AF2F2F981E4A00592539 /* MeshBuddy */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F474AF4C2F981E4B00592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, F474AF4D2F981E4B00592539 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = MeshBuddy; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F4A3254D2C1E485C008B4597 /* Frameworks */ = {
@@ -118,39 +97,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F47F1E212C1B6D8500050947 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F47F1E312C1C820500050947 /* DocumentFileContainer.swift */,
-				F47F1E222C1B6D8B00050947 /* MeshGradientDefinitionDocument.swift */,
-				F47F1E1F2C1B601C00050947 /* MeshGradientDefinition.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F47F1E2E2C1C809600050947 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				46374A642CFE7EC300F23EB1 /* Color+.swift */,
-				F4B0FE852C1E358E00BA897C /* NSApp+Document.swift */,
-				F47F1E2F2C1C80A000050947 /* DecodableDefault.swift */,
-				F4B0FE7F2C1DEB4A00BA897C /* ColorDrop.swift */,
-				F4B0FE812C1DFEFA00BA897C /* ImageExporter.swift */,
-				F4B0FE872C1E369300BA897C /* Gradient+Image.swift */,
-				F4A325682C1E48C3008B4597 /* MeshGradient+.swift */,
-				46374A622CFE749100F23EB1 /* SwiftGenerator.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		F4A325492C1E3EF7008B4597 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		F4A325512C1E485C008B4597 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,30 +105,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F4A325542C1E485D008B4597 /* MeshQuickLook */ = {
-			isa = PBXGroup;
-			children = (
-				F4A325572C1E485D008B4597 /* MeshPreviewProvider.swift */,
-				F4A3255C2C1E485D008B4597 /* Info.plist */,
-				F4A3255D2C1E485D008B4597 /* MeshQuickLook.entitlements */,
-			);
-			path = MeshQuickLook;
-			sourceTree = "<group>";
-		};
-		F4B0FE8D2C1E3DBF00BA897C /* AppUpdates */ = {
-			isa = PBXGroup;
-			children = (
-				F4B0FE8E2C1E3DC600BA897C /* AppUpdateManager.swift */,
-			);
-			path = AppUpdates;
-			sourceTree = "<group>";
-		};
 		F4E8C7E92C1B4B5900BEF570 = {
 			isa = PBXGroup;
 			children = (
 				F47F1E272C1B785800050947 /* README.md */,
-				F4E8C7F42C1B4B5900BEF570 /* MeshBuddy */,
-				F4A325542C1E485D008B4597 /* MeshQuickLook */,
+				F474AF2F2F981E4A00592539 /* MeshBuddy */,
+				F474AF0F2F981E4500592539 /* MeshQuickLook */,
 				F4A325512C1E485C008B4597 /* Frameworks */,
 				F4E8C7F32C1B4B5900BEF570 /* Products */,
 			);
@@ -195,36 +123,6 @@
 				F4A325502C1E485C008B4597 /* MeshQuickLook.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F4E8C7F42C1B4B5900BEF570 /* MeshBuddy */ = {
-			isa = PBXGroup;
-			children = (
-				F4A325492C1E3EF7008B4597 /* Config */,
-				F4B0FE8D2C1E3DBF00BA897C /* AppUpdates */,
-				F47F1E2E2C1C809600050947 /* Utilities */,
-				F47F1E212C1B6D8500050947 /* Model */,
-				F4E8C7F52C1B4B5900BEF570 /* MeshBuddyApp.swift */,
-				F4E8C7F72C1B4B5900BEF570 /* DocumentView.swift */,
-				F47F1E252C1B716200050947 /* DocumentSetupSheet.swift */,
-				F47F1E1D2C1B518A00050947 /* MeshGradientEditor.swift */,
-				384874052C567431005D23C6 /* ColorPickerButton.swift */,
-				F47F1E982C1CEB3700050947 /* MeshGradientInspector.swift */,
-				46374A682CFE8A2F00F23EB1 /* SwiftCodeView.swift */,
-				F47F1E242C1B6E0400050947 /* Info.plist */,
-				F4E8C7F92C1B4B5A00BEF570 /* Assets.xcassets */,
-				F4E8C7FE2C1B4B5A00BEF570 /* MeshBuddy.entitlements */,
-				F4E8C7FB2C1B4B5A00BEF570 /* Preview Content */,
-			);
-			path = MeshBuddy;
-			sourceTree = "<group>";
-		};
-		F4E8C7FB2C1B4B5A00BEF570 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F4E8C7FC2C1B4B5A00BEF570 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +159,9 @@
 			dependencies = (
 				F4A3255F2C1E485D008B4597 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				F474AF2F2F981E4A00592539 /* MeshBuddy */,
+			);
 			name = MeshBuddy;
 			packageProductDependencies = (
 				F4B0FE8B2C1E3D9200BA897C /* Sparkle */,
@@ -277,7 +178,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					F4A3254F2C1E485C008B4597 = {
 						CreatedOnToolsVersion = 16.0;
@@ -321,9 +222,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E8C7FD2C1B4B5A00BEF570 /* Preview Assets.xcassets in Resources */,
-				F4A3254B2C1E3F01008B4597 /* Main.xcconfig in Resources */,
-				F4E8C7FA2C1B4B5A00BEF570 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,12 +232,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4A3256B2C1E49AD008B4597 /* Gradient+Image.swift in Sources */,
-				F4A3256A2C1E48D1008B4597 /* MeshGradient+.swift in Sources */,
-				F4A325652C1E48B8008B4597 /* DocumentFileContainer.swift in Sources */,
-				F4A325662C1E48B8008B4597 /* MeshGradientDefinitionDocument.swift in Sources */,
-				F4A325672C1E48B8008B4597 /* MeshGradientDefinition.swift in Sources */,
-				F4A325582C1E485D008B4597 /* MeshPreviewProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,25 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F47F1E322C1C820600050947 /* DocumentFileContainer.swift in Sources */,
-				46374A652CFE7EC500F23EB1 /* Color+.swift in Sources */,
-				F47F1E1E2C1B518D00050947 /* MeshGradientEditor.swift in Sources */,
-				F4B0FE802C1DEB4F00BA897C /* ColorDrop.swift in Sources */,
-				F4E8C7F82C1B4B5900BEF570 /* DocumentView.swift in Sources */,
-				F4B0FE8F2C1E3DCB00BA897C /* AppUpdateManager.swift in Sources */,
-				46374A692CFE8A2F00F23EB1 /* SwiftCodeView.swift in Sources */,
-				F4B0FE822C1DFEFD00BA897C /* ImageExporter.swift in Sources */,
-				F4E8C7F62C1B4B5900BEF570 /* MeshBuddyApp.swift in Sources */,
-				F47F1E302C1C80A000050947 /* DecodableDefault.swift in Sources */,
-				F47F1E992C1CEB3C00050947 /* MeshGradientInspector.swift in Sources */,
-				F47F1E232C1B6D8D00050947 /* MeshGradientDefinitionDocument.swift in Sources */,
-				F4A325692C1E48C6008B4597 /* MeshGradient+.swift in Sources */,
-				384874062C567542005D23C6 /* ColorPickerButton.swift in Sources */,
-				F4B0FE862C1E358E00BA897C /* NSApp+Document.swift in Sources */,
-				F47F1E262C1B716500050947 /* DocumentSetupSheet.swift in Sources */,
-				F47F1E202C1B601C00050947 /* MeshGradientDefinition.swift in Sources */,
-				F4B0FE882C1E369500BA897C /* Gradient+Image.swift in Sources */,
-				46374A632CFE749300F23EB1 /* SwiftGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +258,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MeshQuickLook/MeshQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C7439RJLG;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeshQuickLook/Info.plist;
@@ -409,7 +282,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MeshQuickLook/MeshQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C7439RJLG;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeshQuickLook/Info.plist;
@@ -430,7 +303,8 @@
 		};
 		F4E8C7FF2C1B4B5A00BEF570 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */;
+			baseConfigurationReferenceAnchor = F474AF2F2F981E4A00592539 /* MeshBuddy */;
+			baseConfigurationReferenceRelativePath = Config/Main.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -463,7 +337,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8C7439RJLG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -486,6 +362,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -499,7 +376,8 @@
 		};
 		F4E8C8002C1B4B5A00BEF570 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4A3254A2C1E3EFE008B4597 /* Main.xcconfig */;
+			baseConfigurationReferenceAnchor = F474AF2F2F981E4A00592539 /* MeshBuddy */;
+			baseConfigurationReferenceRelativePath = Config/Main.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -532,7 +410,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8C7439RJLG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -548,6 +428,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
@@ -566,8 +447,8 @@
 				CODE_SIGN_ENTITLEMENTS = MeshBuddy/MeshBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MeshBuddy/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C7439RJLG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -593,8 +474,8 @@
 				CODE_SIGN_ENTITLEMENTS = MeshBuddy/MeshBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MeshBuddy/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C7439RJLG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
