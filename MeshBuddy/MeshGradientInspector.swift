@@ -102,18 +102,18 @@ private struct ColorPaletteList: View {
     @Binding var colorPalette: [Color]
     @State private var selection: Set<Int> = []
 
-    @Environment(\.undoManager)
-    private var undoManager
-
     var body: some View {
         List(selection: $selection) {
             ForEach(Array(colorPalette.indices), id: \.self) { index in
                 ColorPaletteRow(
                     title: "Color \(index + 1)",
-                    color: $colorPalette[index]
-                ) {
-                    colorPalette.remove(at: index)
-                }
+                    color: $colorPalette[index],
+                    onDuplicate: {
+                        colorPalette.append(colorPalette[index])
+                    },
+                    onDelete: {
+                        colorPalette.remove(at: index)
+                    })
                 .tag(index)
             }
             .onDelete(perform: deleteColors)
@@ -134,6 +134,7 @@ private struct ColorPaletteList: View {
 private struct ColorPaletteRow: View {
     let title: String
     @Binding var color: Color
+    let onDuplicate: () -> Void
     let onDelete: () -> Void
 
     var body: some View {
@@ -143,6 +144,11 @@ private struct ColorPaletteRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentShape(.rect)
             .contextMenu {
+                Button(action: onDuplicate) {
+                    Label("Duplicate", systemImage: "plus.square.on.square")
+                }
+                .keyboardShortcut("d", modifiers: .command)
+
                 Button(role: .destructive, action: onDelete) {
                     Label("Delete", systemImage: "trash")
                 }
