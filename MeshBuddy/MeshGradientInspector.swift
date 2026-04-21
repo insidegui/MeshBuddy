@@ -3,6 +3,7 @@ import SwiftUI
 struct MeshGradientInspector: View {
     @Binding var gradient: MeshGradientDefinition
     @Binding var selectedPoints: Set<MeshGradientPoint.ID>
+    let colorPaletteCommandContext: ColorPaletteCommandContext
     var documentConfiguration = false
 
     var body: some View {
@@ -32,7 +33,10 @@ struct MeshGradientInspector: View {
             }
 
             if !documentConfiguration {
-                ColorPaletteSection(gradient: $gradient)
+                ColorPaletteSection(
+                    gradient: $gradient,
+                    colorPaletteCommandContext: colorPaletteCommandContext
+                )
             }
         }
         .formStyle(.grouped)
@@ -46,13 +50,17 @@ struct MeshGradientInspector: View {
 
 struct ColorPaletteSection: View {
     @Binding var gradient: MeshGradientDefinition
+    let colorPaletteCommandContext: ColorPaletteCommandContext
 
     @State private var colorPalette = [Color]()
     @State private var distributionStyle = ColorDistributionStyle.uniform
 
     var body: some View {
         Section {
-            ColorPaletteList(colorPalette: $colorPalette)
+            ColorPaletteList(
+                colorPalette: $colorPalette,
+                colorPaletteCommandContext: colorPaletteCommandContext
+            )
 
             Picker("Distribution", selection: $distributionStyle) {
                 ForEach(ColorDistributionStyle.allCases) { option in
@@ -100,6 +108,7 @@ struct ColorPaletteSection: View {
 
 private struct ColorPaletteList: View {
     @Binding var colorPalette: [Color]
+    let colorPaletteCommandContext: ColorPaletteCommandContext
     @State private var selection: Set<Int> = []
 
     var body: some View {
@@ -122,12 +131,38 @@ private struct ColorPaletteList: View {
             guard !selection.isEmpty else { return }
             deleteColors(at: IndexSet(selection))
         }
+        .onAppear(perform: updateCommandContext)
+        .onChange(of: selection, initial: true) { _, _ in
+            updateCommandContext()
+        }
+        .onChange(of: colorPalette.count, initial: true) { _, _ in
+            selection = Set(selection.filter { colorPalette.indices.contains($0) })
+            updateCommandContext()
+        }
     }
 
     private func deleteColors(at offsets: IndexSet) {
         guard colorPalette.count > 2 else { return }
         let validOffsets = offsets.suffix(max(1, colorPalette.count - 2))
         colorPalette.remove(atOffsets: IndexSet(validOffsets))
+    }
+
+    private func updateCommandContext() {
+        colorPaletteCommandContext.canDuplicate = selectedIndex != nil
+        colorPaletteCommandContext.duplicateSelection = duplicateSelectedColor
+    }
+
+    private func duplicateSelectedColor() {
+        guard let selectedIndex else { return }
+        colorPalette.append(colorPalette[selectedIndex])
+    }
+
+    private var selectedIndex: Int? {
+        guard selection.count == 1, let selectedIndex = selection.first, colorPalette.indices.contains(selectedIndex) else {
+            return nil
+        }
+
+        return selectedIndex
     }
 }
 
@@ -147,7 +182,6 @@ private struct ColorPaletteRow: View {
                 Button(action: onDuplicate) {
                     Label("Duplicate", systemImage: "plus.square.on.square")
                 }
-                .keyboardShortcut("d", modifiers: .command)
 
                 Button(role: .destructive, action: onDelete) {
                     Label("Delete", systemImage: "trash")
@@ -205,8 +239,12 @@ extension Binding where Value == MeshGradientDefinition {
         ],
         colorDistribution: .uniform
     )
-    
-    MeshGradientInspector(gradient: $gradient, selectedPoints: .constant([]))
+
+    MeshGradientInspector(
+        gradient: $gradient,
+        selectedPoints: .constant([]),
+        colorPaletteCommandContext: ColorPaletteCommandContext()
+    )
         .frame(width: 340, height: 800)
 }
 #endif

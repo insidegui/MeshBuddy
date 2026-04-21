@@ -7,14 +7,19 @@ struct DocumentView: View {
     @Binding var document: MeshGradientDefinitionDocument
 
     @State private var showingConfigurationSheet = false
+    @State private var colorPaletteCommandContext = ColorPaletteCommandContext()
 
     @Environment(\.dismiss)
     private var dismiss
 
     var body: some View {
-        MeshGradientEditor(gradient: undoBinding)
+        MeshGradientEditor(
+            gradient: undoBinding,
+            colorPaletteCommandContext: colorPaletteCommandContext
+        )
             .focusable()
             .focusEffectDisabled()
+            .focusedSceneValue(colorPaletteCommandContext)
             .task {
                 showingConfigurationSheet = document.needsSetup
             }
@@ -55,4 +60,3 @@ struct DocumentView: View {
     }
 
 }
-

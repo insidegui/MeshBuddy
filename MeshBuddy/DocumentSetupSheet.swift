@@ -4,6 +4,7 @@ struct DocumentSetupSheet: View {
     @Binding var document: MeshGradientDefinitionDocument
 
     @State private var template = MeshGradientDefinition.default
+    @State private var colorPaletteCommandContext = ColorPaletteCommandContext()
 
     @Environment(\.dismiss)
     private var dismiss
@@ -12,6 +13,7 @@ struct DocumentSetupSheet: View {
         MeshGradientInspector(
             gradient: $template,
             selectedPoints: .constant([]),
+            colorPaletteCommandContext: colorPaletteCommandContext,
             documentConfiguration: true
         )
         .frame(minWidth: 320, maxWidth: .infinity, minHeight: 340, maxHeight: .infinity)
