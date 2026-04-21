@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MeshGradientEditor: View {
     @Binding var gradient: MeshGradientDefinition
-    let colorPaletteCommandContext: ColorPaletteCommandContext
     @State private var selectedPoints = Set<MeshGradientPoint.ID>()
     
     @AppStorage("controlsVisible")
@@ -13,11 +12,7 @@ struct MeshGradientEditor: View {
     var body: some View {
         MeshGradientCanvas(gradient: $gradient, selectedPoints: $selectedPoints, controlsVisible: $controlsVisible)
             .inspector(isPresented: .constant(true)) {
-                MeshGradientInspector(
-                    gradient: $gradient,
-                    selectedPoints: $selectedPoints,
-                    colorPaletteCommandContext: colorPaletteCommandContext
-                )
+                MeshGradientInspector(gradient: $gradient, selectedPoints: $selectedPoints)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
@@ -229,9 +224,9 @@ struct MeshGradientPointHandle: View {
     )
 
     MeshGradientEditor(
-        gradient: $definition,
-        colorPaletteCommandContext: ColorPaletteCommandContext()
+        gradient: $definition
     )
+        .environment(ColorPaletteCommandContext())
         .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
 }
 #endif

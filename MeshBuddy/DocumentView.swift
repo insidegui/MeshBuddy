@@ -13,12 +13,10 @@ struct DocumentView: View {
     private var dismiss
 
     var body: some View {
-        MeshGradientEditor(
-            gradient: undoBinding,
-            colorPaletteCommandContext: colorPaletteCommandContext
-        )
+        MeshGradientEditor(gradient: undoBinding)
             .focusable()
             .focusEffectDisabled()
+            .environment(colorPaletteCommandContext)
             .focusedSceneValue(colorPaletteCommandContext)
             .task {
                 showingConfigurationSheet = document.needsSetup

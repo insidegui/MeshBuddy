@@ -13,9 +13,9 @@ struct DocumentSetupSheet: View {
         MeshGradientInspector(
             gradient: $template,
             selectedPoints: .constant([]),
-            colorPaletteCommandContext: colorPaletteCommandContext,
             documentConfiguration: true
         )
+        .environment(colorPaletteCommandContext)
         .frame(minWidth: 320, maxWidth: .infinity, minHeight: 340, maxHeight: .infinity)
         .safeAreaInset(edge: .bottom) {
             HStack {

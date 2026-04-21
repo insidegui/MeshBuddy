@@ -3,7 +3,6 @@ import SwiftUI
 struct MeshGradientInspector: View {
     @Binding var gradient: MeshGradientDefinition
     @Binding var selectedPoints: Set<MeshGradientPoint.ID>
-    let colorPaletteCommandContext: ColorPaletteCommandContext
     var documentConfiguration = false
 
     var body: some View {
@@ -33,10 +32,7 @@ struct MeshGradientInspector: View {
             }
 
             if !documentConfiguration {
-                ColorPaletteSection(
-                    gradient: $gradient,
-                    colorPaletteCommandContext: colorPaletteCommandContext
-                )
+                ColorPaletteSection(gradient: $gradient)
             }
         }
         .formStyle(.grouped)
@@ -50,17 +46,13 @@ struct MeshGradientInspector: View {
 
 struct ColorPaletteSection: View {
     @Binding var gradient: MeshGradientDefinition
-    let colorPaletteCommandContext: ColorPaletteCommandContext
 
     @State private var colorPalette = [Color]()
     @State private var distributionStyle = ColorDistributionStyle.uniform
 
     var body: some View {
         Section {
-            ColorPaletteList(
-                colorPalette: $colorPalette,
-                colorPaletteCommandContext: colorPaletteCommandContext
-            )
+            ColorPaletteList(colorPalette: $colorPalette)
 
             Picker("Distribution", selection: $distributionStyle) {
                 ForEach(ColorDistributionStyle.allCases) { option in
@@ -108,7 +100,8 @@ struct ColorPaletteSection: View {
 
 private struct ColorPaletteList: View {
     @Binding var colorPalette: [Color]
-    let colorPaletteCommandContext: ColorPaletteCommandContext
+    @Environment(ColorPaletteCommandContext.self)
+    private var commandContext
     @State private var selection: Set<Int> = []
 
     var body: some View {
@@ -148,8 +141,8 @@ private struct ColorPaletteList: View {
     }
 
     private func updateCommandContext() {
-        colorPaletteCommandContext.canDuplicate = selectedIndex != nil
-        colorPaletteCommandContext.duplicateSelection = duplicateSelectedColor
+        commandContext.canDuplicate = selectedIndex != nil
+        commandContext.duplicateSelection = duplicateSelectedColor
     }
 
     private func duplicateSelectedColor() {
@@ -242,9 +235,9 @@ extension Binding where Value == MeshGradientDefinition {
 
     MeshGradientInspector(
         gradient: $gradient,
-        selectedPoints: .constant([]),
-        colorPaletteCommandContext: ColorPaletteCommandContext()
+        selectedPoints: .constant([])
     )
+        .environment(ColorPaletteCommandContext())
         .frame(width: 340, height: 800)
 }
 #endif
