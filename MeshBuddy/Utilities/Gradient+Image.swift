@@ -20,7 +20,7 @@ enum ImageRenderingError: LocalizedError {
 
 @MainActor
 extension MeshGradientDefinition {
-    func renderImage(of type: UTType, to outputURL: URL) throws {
+    func renderImage(of type: UTType, to outputURL: URL) async throws {
         guard let destination = CGImageDestinationCreateWithURL(outputURL as CFURL, type.identifier as CFString, 1, nil) else {
             throw ImageRenderingError.destination
         }
@@ -67,5 +67,3 @@ extension MeshGradientDefinition {
         return image
     }
 }
-
-extension ImageRenderer: @unchecked @retroactive Sendable { }

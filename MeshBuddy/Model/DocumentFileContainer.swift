@@ -70,7 +70,7 @@ extension PropertyListEncoder {
     static let meshDefinition = PropertyListEncoder()
 }
 
-extension Color: Codable {
+extension Color: @retroactive Codable {
 
     public enum CodingKeys: String, CodingKey {
         case r, g, b, a
@@ -138,7 +138,7 @@ public extension Color {
     var rgba: RGBAValue { NSColor(self).rgba }
 }
 
-extension Gradient.ColorSpace: Codable {
+extension Gradient.ColorSpace: @retroactive Codable {
     private static let perceptualEncodedValue = "perceptual"
     private static let deviceEncodedValue = "device"
 
